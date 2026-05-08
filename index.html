@@ -3,49 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Retornos — Cezar</title>
+<title>Dashboard — Cezar</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root[data-theme="dark"]{--bg:#0b0d12;--bg2:#13161e;--bg3:#1a1e2a;--border:#1e2338;--text:#e4e8f4;--text2:#6e7a9a;--text3:#343d5a;--accent:#4f8ef7;--green:#1fd48a;--yellow:#f5a623;--red:#f05252;--purple:#7b61ff;--sh:0 2px 16px rgba(0,0,0,.4);}
-:root[data-theme="light"]{--bg:#f0f2f9;--bg2:#fff;--bg3:#f5f6fc;--border:#e0e4f0;--text:#0f1120;--text2:#5a6280;--text3:#9aa0c0;--accent:#3a7af4;--green:#0ea86e;--yellow:#c98a00;--red:#dc3535;--purple:#6a50f0;--sh:0 2px 12px rgba(0,0,0,.07);}
+:root[data-theme="dark"]{--bg:#0b0d12;--bg2:#13161e;--bg3:#1a1e2a;--border:#1e2338;--text:#e4e8f4;--text2:#6e7a9a;--text3:#343d5a;--accent:#4f8ef7;--green:#1fd48a;--yellow:#f5a623;--red:#f05252;--purple:#7b61ff;--sidebar:#0f1118;--sh:0 2px 16px rgba(0,0,0,.4);}
+:root[data-theme="light"]{--bg:#f0f2f9;--bg2:#fff;--bg3:#f5f6fc;--border:#e0e4f0;--text:#0f1120;--text2:#5a6280;--text3:#9aa0c0;--accent:#3a7af4;--green:#0ea86e;--yellow:#c98a00;--red:#dc3535;--purple:#6a50f0;--sidebar:#fff;--sh:0 2px 12px rgba(0,0,0,.07);}
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;}
 
-header{padding:16px 28px;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
-.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:17px;display:flex;align-items:center;gap:8px;}
-.ldot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);animation:bl 2s infinite;}
+/* SIDEBAR */
+.sidebar{width:220px;min-height:100vh;background:var(--sidebar);border-right:1px solid var(--border);display:flex;flex-direction:column;position:fixed;top:0;left:0;z-index:200;}
+.sb-logo{padding:20px 18px 16px;border-bottom:1px solid var(--border);}
+.sb-logo-txt{font-family:'Syne',sans-serif;font-weight:800;font-size:16px;letter-spacing:-.3px;display:flex;align-items:center;gap:8px;}
+.sb-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);animation:bl 2s infinite;}
 @keyframes bl{0%,100%{opacity:1;}50%{opacity:.3;}}
-.hright{display:flex;align-items:center;gap:10px;}
+.sb-sub{font-size:10px;color:var(--text3);margin-top:4px;letter-spacing:.5px;text-transform:uppercase;}
+.sb-nav{flex:1;padding:14px 10px;}
+.sb-sec{font-size:9px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--text3);padding:0 8px;margin-bottom:6px;margin-top:14px;}
+.sb-sec:first-child{margin-top:0;}
+.sb-item{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:8px;cursor:pointer;color:var(--text2);font-size:13px;font-weight:500;border:none;background:transparent;width:100%;text-align:left;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.sb-item:hover{background:var(--bg3);color:var(--text);}
+.sb-item.active{background:var(--bg3);color:var(--text);}
+.sb-item.active .sico{color:var(--accent);}
+.sico{width:16px;text-align:center;font-size:13px;flex-shrink:0;}
+.scnt{margin-left:auto;background:var(--bg);border-radius:100px;padding:1px 7px;font-size:10px;color:var(--text3);}
+.sb-item.active .scnt{background:var(--border);color:var(--text2);}
+
+/* VIEW TOGGLE NA SIDEBAR */
+.sb-view{padding:0 10px 10px;}
+.sb-view-lbl{font-size:9px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--text3);padding:0 8px;margin-bottom:6px;display:block;}
+.vtog{display:flex;background:var(--bg3);border-radius:8px;padding:3px;border:1px solid var(--border);}
+.vtbtn{flex:1;padding:6px;border-radius:6px;border:none;background:transparent;color:var(--text2);font-size:11px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:4px;}
+.vtbtn.active{background:var(--bg2);color:var(--text);box-shadow:0 1px 4px rgba(0,0,0,.15);}
+
+.sb-bot{padding:12px;border-top:1px solid var(--border);}
+.sb-theme{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;cursor:pointer;color:var(--text2);font-size:12px;font-weight:500;border:none;background:transparent;width:100%;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.sb-theme:hover{background:var(--bg3);}
+.livewrap{display:flex;align-items:center;gap:6px;padding:5px 10px;font-size:11px;color:var(--green);margin-bottom:4px;}
+.livedot{width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);animation:bl 1.5s infinite;}
+
+/* CONTENT */
+.content{margin-left:220px;flex:1;min-height:100vh;display:flex;flex-direction:column;}
+.topbar{padding:13px 26px;border-bottom:1px solid var(--border);background:var(--bg2);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.tbtitle{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;}
+.tbright{display:flex;align-items:center;gap:10px;}
 #lupd{font-size:11px;color:var(--text3);}
-.gbtn{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:7px 13px;color:var(--text2);font-size:12px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:5px;transition:all .2s;}
-.gbtn:hover{color:var(--text);}
 .pbtn{background:var(--accent);border:none;border-radius:8px;padding:7px 15px;color:#fff;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:5px;transition:all .2s;}
 .pbtn:hover{opacity:.85;}
 .pbtn.busy{opacity:.6;pointer-events:none;}
 .sp{display:inline-block;width:11px;height:11px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:rot .6s linear infinite;}
 @keyframes rot{to{transform:rotate(360deg);}}
 
-main{padding:24px 28px;max-width:1400px;margin:0 auto;}
-
-/* VIEW TOGGLE */
-.vtrow{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
-.vtrow h2{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;}
-.vtog{display:flex;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:3px;gap:2px;}
-.vtbtn{padding:6px 14px;border-radius:6px;border:none;background:transparent;color:var(--text2);font-size:12px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;}
-.vtbtn.active{background:var(--bg3);color:var(--text);}
+.main{padding:20px 26px;flex:1;}
+.page{display:none;}.page.active{display:block;}
 
 /* CARDS */
-.cgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:20px;}
+.cgrid6{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:18px;}
+.cgrid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px;}
 .mcard{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;box-shadow:var(--sh);border-top:2px solid transparent;animation:fu .35s ease forwards;opacity:0;}
-.mcard:nth-child(1){animation-delay:.05s;border-top-color:var(--accent);}
-.mcard:nth-child(2){animation-delay:.08s;border-top-color:var(--green);}
-.mcard:nth-child(3){animation-delay:.11s;border-top-color:var(--yellow);}
-.mcard:nth-child(4){animation-delay:.14s;border-top-color:var(--purple);}
-.mcard:nth-child(5){animation-delay:.17s;border-top-color:var(--green);}
-.mcard:nth-child(6){animation-delay:.2s;border-top-color:var(--red);}
+.mcard:nth-child(1){animation-delay:.05s;}.mcard:nth-child(2){animation-delay:.08s;}.mcard:nth-child(3){animation-delay:.11s;}.mcard:nth-child(4){animation-delay:.14s;}.mcard:nth-child(5){animation-delay:.17s;}.mcard:nth-child(6){animation-delay:.2s;}
 @keyframes fu{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
 .clbl{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:6px;}
-.cval{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;letter-spacing:-1px;line-height:1;}
+.cval{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;letter-spacing:-1px;line-height:1;margin-bottom:4px;}
+.csub{font-size:11px;color:var(--text2);}
 
 /* TOOLBAR */
 .toolbar{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
@@ -73,7 +93,7 @@ tbody td{padding:11px 14px;font-size:12px;vertical-align:middle;}
 .khead{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
 .ktitle{font-size:12px;font-weight:600;}
 .kcnt{background:var(--bg3);border-radius:100px;padding:2px 8px;font-size:10px;color:var(--text2);}
-.kbody{padding:10px;max-height:420px;overflow-y:auto;}
+.kbody{padding:10px;max-height:400px;overflow-y:auto;}
 .kcard{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-bottom:8px;}
 .kcard:last-child{margin-bottom:0;}
 .kname{font-size:12px;font-weight:500;}
@@ -81,74 +101,169 @@ tbody td{padding:11px 14px;font-size:12px;vertical-align:middle;}
 .kdate{font-size:10px;color:var(--text3);margin-top:3px;}
 .kempty{padding:20px;text-align:center;color:var(--text3);font-size:11px;}
 
+/* BARRA DE PROGRESSO */
+.prog-bar{margin-bottom:16px;}
+.prog-label{display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px;}
+.prog-label span:first-child{color:var(--text2);}
+.prog-label span:last-child{font-weight:500;}
+.prog-track{background:var(--bg3);border-radius:100px;height:7px;overflow:hidden;}
+.prog-fill{height:100%;border-radius:100px;transition:width 1s cubic-bezier(.4,0,.2,1);}
+
 .empty{padding:40px 20px;text-align:center;color:var(--text3);font-size:12px;}
 .ld{padding:40px 20px;text-align:center;color:var(--text3);}
 .lsp{width:18px;height:18px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:rot .6s linear infinite;margin:0 auto 10px;display:block;}
 .errbox{background:rgba(240,82,82,.08);border:1px solid rgba(240,82,82,.2);border-radius:10px;padding:12px 16px;color:var(--red);font-size:12px;margin-bottom:16px;display:none;}
 
-@media(max-width:1100px){.cgrid{grid-template-columns:repeat(3,1fr);}}
-@media(max-width:700px){.cgrid{grid-template-columns:repeat(2,1fr);}.kboard{grid-template-columns:1fr;}main{padding:14px;}}
+@media(max-width:1100px){.cgrid6{grid-template-columns:repeat(3,1fr);}.cgrid4{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:768px){.content{margin-left:0;}.sidebar{display:none;}.main{padding:14px;}}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="logo"><div class="ldot"></div>Cezar · Retornos</div>
-  <div class="hright">
-    <span id="lupd"></span>
-    <button class="gbtn" onclick="toggleTheme()"><span id="tico">☀️</span><span id="ttxt">Modo claro</span></button>
-    <button class="pbtn" id="rbtn" onclick="loadData()">↻ Atualizar</button>
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sb-logo">
+    <div class="sb-logo-txt"><div class="sb-dot"></div>Cezar · Dashboard</div>
+    <div class="sb-sub">Análise de Leads</div>
   </div>
-</header>
+  <nav class="sb-nav">
+    <div class="sb-sec">Fluxo</div>
+    <button class="sb-item active" id="nav-ret" onclick="goPage('ret')">
+      <span class="sico">◈</span>Retornos<span class="scnt" id="cnt-ret">0</span>
+    </button>
+    <div class="sb-sec">Campanhas</div>
+    <button class="sb-item" id="nav-met" onclick="goPage('met')">
+      <span class="sico">◉</span>Métricas<span class="scnt" id="cnt-met">0</span>
+    </button>
+  </nav>
 
-<main>
-  <div class="errbox" id="errbox"></div>
-
-  <!-- CARDS -->
-  <div class="cgrid">
-    <div class="mcard"><div class="clbl">Mensagem</div><div class="cval" style="color:var(--accent)" id="c-msg">—</div></div>
-    <div class="mcard"><div class="clbl">Clicou no Link</div><div class="cval" style="color:var(--green)" id="c-cli">—</div></div>
-    <div class="mcard"><div class="clbl">Baixando Agora</div><div class="cval" style="color:var(--yellow)" id="c-bnd">—</div></div>
-    <div class="mcard"><div class="clbl">Baixou o App</div><div class="cval" style="color:var(--purple)" id="c-bxu">—</div></div>
-    <div class="mcard"><div class="clbl">Confirmou</div><div class="cval" style="color:var(--green)" id="c-con">—</div></div>
-    <div class="mcard"><div class="clbl">Bloqueou</div><div class="cval" style="color:var(--red)" id="c-blk">—</div></div>
-  </div>
-
-  <!-- TOGGLE + TOOLBAR -->
-  <div class="vtrow">
-    <div style="font-size:13px;color:var(--text2)" id="totalLbl"></div>
+  <div class="sb-view" id="sb-view-wrap">
+    <span class="sb-view-lbl">Visualização</span>
     <div class="vtog">
       <button class="vtbtn active" id="vt-cards" onclick="setView('cards')">▦ Cards</button>
       <button class="vtbtn" id="vt-kanban" onclick="setView('kanban')">⊞ Kanban</button>
     </div>
   </div>
 
-  <div class="toolbar">
-    <input class="fsearch" id="srch" type="text" placeholder="Buscar nome ou telefone..." oninput="render()">
-    <select class="fsel" id="fTag" onchange="render()">
-      <option value="">Todas as etapas</option>
-      <option value="mensagem">mensagem</option>
-      <option value="clicou no link">clicou no link</option>
-      <option value="baixando agora">baixando agora</option>
-      <option value="baixou o app">baixou o app</option>
-      <option value="confirmou">confirmou</option>
-      <option value="bloqueou">bloqueou</option>
-    </select>
-    <span class="tlbl" id="tlbl"></span>
+  <div class="sb-bot">
+    <div class="livewrap"><div class="livedot"></div>ao vivo · <span id="lupd2"></span></div>
+    <button class="sb-theme" onclick="toggleTheme()"><span id="tico">☀️</span><span id="ttxt"> Modo claro</span></button>
   </div>
+</aside>
 
-  <!-- CARDS VIEW -->
-  <div id="vw-cards">
-    <div class="tbox">
-      <div id="tblLeads"><div class="ld"><span class="lsp"></span>Carregando...</div></div>
+<!-- CONTEÚDO -->
+<div class="content">
+  <div class="topbar">
+    <div class="tbtitle" id="topTitle">Retornos do Fluxo</div>
+    <div class="tbright">
+      <span id="lupd"></span>
+      <button class="pbtn" id="rbtn" onclick="loadAll()">↻ Atualizar</button>
     </div>
   </div>
 
-  <!-- KANBAN VIEW -->
-  <div id="vw-kanban" style="display:none;">
-    <div class="kboard" id="kboard"></div>
+  <div class="main">
+    <div class="errbox" id="errbox"></div>
+
+    <!-- ===== PÁGINA RETORNOS ===== -->
+    <div class="page active" id="page-ret">
+      <div class="cgrid6">
+        <div class="mcard" style="border-top-color:var(--accent)"><div class="clbl">Mensagem</div><div class="cval" style="color:var(--accent)" id="r-msg">—</div></div>
+        <div class="mcard" style="border-top-color:var(--green)"><div class="clbl">Clicou no Link</div><div class="cval" style="color:var(--green)" id="r-cli">—</div></div>
+        <div class="mcard" style="border-top-color:var(--yellow)"><div class="clbl">Baixando Agora</div><div class="cval" style="color:var(--yellow)" id="r-bnd">—</div></div>
+        <div class="mcard" style="border-top-color:var(--purple)"><div class="clbl">Baixou o App</div><div class="cval" style="color:var(--purple)" id="r-bxu">—</div></div>
+        <div class="mcard" style="border-top-color:var(--green)"><div class="clbl">Confirmou</div><div class="cval" style="color:var(--green)" id="r-con">—</div></div>
+        <div class="mcard" style="border-top-color:var(--red)"><div class="clbl">Bloqueou</div><div class="cval" style="color:var(--red)" id="r-blk">—</div></div>
+      </div>
+
+      <div class="toolbar">
+        <input class="fsearch" id="srchRet" type="text" placeholder="Buscar nome ou telefone..." oninput="renderRet()">
+        <select class="fsel" id="fTag" onchange="renderRet()">
+          <option value="">Todas as etapas</option>
+          <option value="mensagem">mensagem</option>
+          <option value="clicou no link">clicou no link</option>
+          <option value="baixando agora">baixando agora</option>
+          <option value="baixou o app">baixou o app</option>
+          <option value="confirmou">confirmou</option>
+          <option value="bloqueou">bloqueou</option>
+        </select>
+        <span class="tlbl" id="lblRet"></span>
+      </div>
+
+      <div id="vw-cards">
+        <div class="tbox">
+          <div id="tblRet"><div class="ld"><span class="lsp"></span>Carregando...</div></div>
+        </div>
+      </div>
+      <div id="vw-kanban" style="display:none;">
+        <div class="kboard" id="kboard"></div>
+      </div>
+    </div>
+
+    <!-- ===== PÁGINA MÉTRICAS ===== -->
+    <div class="page" id="page-met">
+
+      <!-- SELETOR DE CAMPANHA -->
+      <div class="toolbar" style="margin-bottom:18px;">
+        <label style="font-size:12px;color:var(--text2);font-weight:500;">Campanha:</label>
+        <select class="fsel" id="campSel" onchange="renderMet()">
+          <option value="">Todas as campanhas</option>
+        </select>
+        <span class="tlbl" id="lblMet"></span>
+      </div>
+
+      <!-- CARDS MÉTRICAS -->
+      <div class="cgrid4">
+        <div class="mcard" style="border-top-color:var(--accent)">
+          <div class="clbl">Total da Campanha</div>
+          <div class="cval" style="color:var(--accent)" id="m-tot">—</div>
+          <div class="csub">leads importados</div>
+        </div>
+        <div class="mcard" style="border-top-color:var(--green)">
+          <div class="clbl">Enviados</div>
+          <div class="cval" style="color:var(--green)" id="m-env">—</div>
+          <div class="csub" id="m-env-p">—</div>
+        </div>
+        <div class="mcard" style="border-top-color:var(--red)">
+          <div class="clbl">Falha</div>
+          <div class="cval" style="color:var(--red)" id="m-fal">—</div>
+          <div class="csub" id="m-fal-p">—</div>
+        </div>
+        <div class="mcard" style="border-top-color:var(--yellow)">
+          <div class="clbl">Sem Interação</div>
+          <div class="cval" style="color:var(--yellow)" id="m-sem">—</div>
+          <div class="csub">enviados sem retorno no fluxo</div>
+        </div>
+      </div>
+
+      <!-- BARRAS DE PROGRESSO POR TAG -->
+      <div class="tbox" style="padding:20px;margin-bottom:18px;animation:fu .35s .1s ease forwards;opacity:0;">
+        <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;margin-bottom:16px;">Retornos por Etapa <span style="font-size:11px;font-weight:400;color:var(--text3);">(dos enviados desta campanha)</span></div>
+        <div id="progBars"><div class="ld" style="padding:16px"><span class="lsp"></span></div></div>
+      </div>
+
+      <!-- TABELA DETALHADA -->
+      <div class="toolbar">
+        <input class="fsearch" id="srchMet" type="text" placeholder="Buscar nome ou telefone..." oninput="renderMetTable()">
+        <select class="fsel" id="fMetStatus" onchange="renderMetTable()">
+          <option value="">Todos os status</option>
+          <option value="Enviado">Enviado</option>
+          <option value="Falha">Falha</option>
+        </select>
+        <select class="fsel" id="fMetInt" onchange="renderMetTable()">
+          <option value="">Toda interação</option>
+          <option value="sim">Com interação</option>
+          <option value="nao">Sem interação</option>
+        </select>
+        <span class="tlbl" id="lblMetTable"></span>
+      </div>
+
+      <div class="tbox">
+        <div id="tblMet"><div class="ld"><span class="lsp"></span>Carregando...</div></div>
+      </div>
+    </div>
+
   </div>
-</main>
+</div>
 
 <script>
 const SB='https://vdloxobxrtfitbsuwzyw.supabase.co';
@@ -157,17 +272,14 @@ const SK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6I
 // TEMA
 const saved=localStorage.getItem('theme')||'dark';
 document.documentElement.setAttribute('data-theme',saved);
-if(saved==='light'){document.getElementById('tico').textContent='🌙';document.getElementById('ttxt').textContent='Modo escuro';}
+if(saved==='light'){document.getElementById('tico').textContent='🌙';document.getElementById('ttxt').textContent=' Modo escuro';}
 function toggleTheme(){
   const d=document.documentElement.getAttribute('data-theme')==='dark';
   document.documentElement.setAttribute('data-theme',d?'light':'dark');
   document.getElementById('tico').textContent=d?'🌙':'☀️';
-  document.getElementById('ttxt').textContent=d?'Modo escuro':'Modo claro';
+  document.getElementById('ttxt').textContent=d?' Modo escuro':' Modo claro';
   localStorage.setItem('theme',d?'light':'dark');
 }
-
-// ESTADO
-let leadsData=[];
 
 // VIEW
 let view=localStorage.getItem('view')||'cards';
@@ -177,11 +289,23 @@ function setView(v){
   document.getElementById('vt-kanban').classList.toggle('active',v==='kanban');
   document.getElementById('vw-cards').style.display=v==='cards'?'block':'none';
   document.getElementById('vw-kanban').style.display=v==='kanban'?'block':'none';
-  render();
+  renderRet();
 }
 setView(view);
 
+// PÁGINA
+function goPage(p){
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.getElementById('page-'+p).classList.add('active');
+  document.querySelectorAll('.sb-item').forEach(x=>x.classList.remove('active'));
+  document.getElementById('nav-'+p).classList.add('active');
+  document.getElementById('topTitle').textContent=p==='ret'?'Retornos do Fluxo':'Métricas de Campanha';
+  document.getElementById('sb-view-wrap').style.display=p==='ret'?'block':'none';
+}
+
+// FORMATADORES
 const fdt=d=>{if(!d)return'—';const s=d.endsWith('Z')||d.includes('+')?d:d+'Z';return new Date(s).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});};
+const pct=v=>`${(v||0).toFixed(1)}%`;
 
 function tagBg(t){
   if(!t)return'background:var(--bg3);color:var(--text2)';
@@ -195,7 +319,7 @@ function tagBg(t){
   return'background:var(--bg3);color:var(--text2)';
 }
 function tagColor(t){
-  if(!t)return'var(--text2)';const n=t.toLowerCase();
+  const n=(t||'').toLowerCase();
   if(n==='mensagem')return'var(--accent)';
   if(n==='clicou no link')return'var(--green)';
   if(n==='baixando agora')return'var(--yellow)';
@@ -232,16 +356,36 @@ function dedup(data){
   return Object.values(m);
 }
 
-async function loadData(){
+// ESTADO
+let leadsData=[];
+let enviosData=[];
+let campanhasData=[];
+
+// LOAD ALL
+async function loadAll(){
   const btn=document.getElementById('rbtn');
   btn.classList.add('busy');btn.innerHTML='<span class="sp"></span> Atualizando';
   document.getElementById('errbox').style.display='none';
   try{
-    leadsData=await fetchAll('eventos_leads','order=criado_em.desc');
-    renderCards();
-    render();
-    document.getElementById('lupd').textContent=
-      new Date().toLocaleTimeString('pt-BR',{timeZone:'America/Sao_Paulo',hour:'2-digit',minute:'2-digit'});
+    const [leads,envios,campanhas]=await Promise.all([
+      fetchAll('eventos_leads','order=criado_em.desc'),
+      fetchAll('envios','order=criado_em.desc'),
+      fetchAll('campanhas','order=nome.asc'),
+    ]);
+    leadsData=leads;
+    enviosData=envios;
+    campanhasData=campanhas;
+
+    renderRetCards();
+    renderRet();
+    populateCampSelect();
+    renderMet();
+
+    document.getElementById('cnt-ret').textContent=dedup(leads).length;
+    document.getElementById('cnt-met').textContent=campanhas.length;
+    const t=new Date().toLocaleTimeString('pt-BR',{timeZone:'America/Sao_Paulo',hour:'2-digit',minute:'2-digit'});
+    document.getElementById('lupd').textContent=t;
+    document.getElementById('lupd2').textContent=t;
   }catch(e){
     const b=document.getElementById('errbox');b.style.display='block';
     b.textContent=`Erro: ${e.message}`;
@@ -249,38 +393,34 @@ async function loadData(){
   btn.classList.remove('busy');btn.innerHTML='↻ Atualizar';
 }
 
-function renderCards(){
+// ===== RETORNOS =====
+function renderRetCards(){
   const d=dedup(leadsData);
   const c=tag=>d.filter(x=>(x.tag_name||'').toLowerCase()===tag).length;
-  document.getElementById('c-msg').textContent=c('mensagem');
-  document.getElementById('c-cli').textContent=c('clicou no link');
-  document.getElementById('c-bnd').textContent=c('baixando agora');
-  document.getElementById('c-bxu').textContent=c('baixou o app');
-  document.getElementById('c-con').textContent=c('confirmou');
-  document.getElementById('c-blk').textContent=c('bloqueou');
+  document.getElementById('r-msg').textContent=c('mensagem');
+  document.getElementById('r-cli').textContent=c('clicou no link');
+  document.getElementById('r-bnd').textContent=c('baixando agora');
+  document.getElementById('r-bxu').textContent=c('baixou o app');
+  document.getElementById('r-con').textContent=c('confirmou');
+  document.getElementById('r-blk').textContent=c('bloqueou');
 }
 
-function getFiltered(){
-  const q=document.getElementById('srch').value.toLowerCase().trim();
+function renderRet(){
+  const q=document.getElementById('srchRet').value.toLowerCase().trim();
   const tag=document.getElementById('fTag').value.toLowerCase();
   let data=dedup(leadsData);
   if(tag)data=data.filter(d=>(d.tag_name||'').toLowerCase()===tag);
   if(q)data=data.filter(d=>(d.lead_name||'').toLowerCase().includes(q)||(d.lead_phone||'').includes(q));
-  return data;
-}
-
-function render(){
-  const data=getFiltered();
-  document.getElementById('tlbl').textContent=`${data.length} lead${data.length!==1?'s':''}`;
+  document.getElementById('lblRet').textContent=`${data.length} lead${data.length!==1?'s':''}`;
   if(view==='kanban'){renderKanban(data);}else{renderTable(data);}
 }
 
 function renderTable(data){
-  if(!data.length){document.getElementById('tblLeads').innerHTML='<div class="empty">Nenhum lead encontrado</div>';return;}
-  document.getElementById('tblLeads').innerHTML=`<div style="overflow-x:auto"><table>
+  if(!data.length){document.getElementById('tblRet').innerHTML='<div class="empty">Nenhum lead encontrado</div>';return;}
+  document.getElementById('tblRet').innerHTML=`<div style="overflow-x:auto"><table>
     <thead><tr><th>#</th><th>Nome</th><th>Telefone</th><th>Etapa</th><th>Fluxo</th><th>Última interação</th></tr></thead>
     <tbody>${data.map((d,i)=>`<tr>
-      <td style="color:var(--text3);font-size:11px;width:40px">${i+1}</td>
+      <td style="color:var(--text3);font-size:11px;width:36px">${i+1}</td>
       <td><div class="tn">${d.lead_name||'—'}</div></td>
       <td><div class="td2">${d.lead_phone||'—'}</div></td>
       <td><span class="pill" style="${tagBg(d.tag_name)}">${d.tag_name||'—'}</span></td>
@@ -294,10 +434,9 @@ const TAGS=['mensagem','clicou no link','baixando agora','baixou o app','confirm
 function renderKanban(data){
   document.getElementById('kboard').innerHTML=TAGS.map(tag=>{
     const leads=data.filter(d=>(d.tag_name||'').toLowerCase()===tag);
-    const color=tagColor(tag);
     return`<div class="kcol">
       <div class="khead">
-        <span class="ktitle" style="color:${color}">${tag}</span>
+        <span class="ktitle" style="color:${tagColor(tag)}">${tag}</span>
         <span class="kcnt">${leads.length}</span>
       </div>
       <div class="kbody">${leads.length?leads.map(d=>`
@@ -311,8 +450,105 @@ function renderKanban(data){
   }).join('');
 }
 
-loadData();
-setInterval(loadData,60000);
+// ===== MÉTRICAS =====
+function populateCampSelect(){
+  const sel=document.getElementById('campSel');
+  const cur=sel.value;
+  sel.innerHTML='<option value="">Todas as campanhas</option>';
+  campanhasData.forEach(c=>{
+    const o=document.createElement('option');
+    o.value=c.nome;o.textContent=c.nome;
+    if(c.nome===cur)o.selected=true;
+    sel.appendChild(o);
+  });
+}
+
+function renderMet(){
+  const campNome=document.getElementById('campSel').value;
+  let envios=enviosData;
+  if(campNome)envios=envios.filter(e=>e.campanha_nome===campNome);
+
+  const total=envios.length;
+  const enviados=envios.filter(e=>e.status==='Enviado'||e.status==='enviado'||e.status==='sent');
+  const falha=envios.filter(e=>e.status==='Falha'||e.status==='falha'||e.status==='Erro'||e.status==='erro');
+
+  // Sem interação: enviados cujo telefone NÃO aparece em eventos_leads
+  const phonesFluxo=new Set(leadsData.map(d=>d.lead_phone));
+  const semInteracao=enviados.filter(e=>!phonesFluxo.has(e.telefone));
+
+  document.getElementById('m-tot').textContent=total;
+  document.getElementById('m-env').textContent=enviados.length;
+  document.getElementById('m-env-p').textContent=pct(total?enviados.length/total*100:0)+' do total';
+  document.getElementById('m-fal').textContent=falha.length;
+  document.getElementById('m-fal-p').textContent=pct(total?falha.length/total*100:0)+' do total';
+  document.getElementById('m-sem').textContent=semInteracao.length;
+  document.getElementById('lblMet').textContent=campNome?campNome:'Todas as campanhas';
+
+  // BARRAS DE PROGRESSO — retornos dos enviados desta campanha
+  const phonesCamp=new Set(enviados.map(e=>e.telefone));
+  const leadsDestasCamp=leadsData.filter(d=>phonesCamp.has(d.lead_phone));
+  const dedupCamp=dedup(leadsDestasCamp);
+  const totalEnv=enviados.length||1;
+
+  document.getElementById('progBars').innerHTML=TAGS.map(tag=>{
+    const qtd=dedupCamp.filter(d=>(d.tag_name||'').toLowerCase()===tag).length;
+    const p=totalEnv?qtd/totalEnv*100:0;
+    const cor=tagColor(tag);
+    return`<div class="prog-bar">
+      <div class="prog-label">
+        <span>${tag}</span>
+        <span style="color:${cor}">${qtd} leads &nbsp;·&nbsp; ${pct(p)}</span>
+      </div>
+      <div class="prog-track">
+        <div class="prog-fill" style="width:${p.toFixed(1)}%;background:${cor}"></div>
+      </div>
+    </div>`;
+  }).join('');
+
+  renderMetTable();
+}
+
+function renderMetTable(){
+  const campNome=document.getElementById('campSel').value;
+  const q=document.getElementById('srchMet').value.toLowerCase().trim();
+  const status=document.getElementById('fMetStatus').value;
+  const interacao=document.getElementById('fMetInt').value;
+
+  const phonesFluxo=new Set(leadsData.map(d=>d.lead_phone));
+  const getTag=phone=>{const l=dedup(leadsData).find(d=>d.lead_phone===phone);return l?l.tag_name:'';};
+
+  let data=enviosData;
+  if(campNome)data=data.filter(e=>e.campanha_nome===campNome);
+  if(status)data=data.filter(e=>e.status===status);
+  if(interacao==='sim')data=data.filter(e=>phonesFluxo.has(e.telefone));
+  if(interacao==='nao')data=data.filter(e=>!phonesFluxo.has(e.telefone));
+  if(q)data=data.filter(e=>(e.nome||'').toLowerCase().includes(q)||(e.telefone||'').includes(q));
+
+  document.getElementById('lblMetTable').textContent=`${data.length} registro${data.length!==1?'s':''}`;
+
+  if(!data.length){document.getElementById('tblMet').innerHTML='<div class="empty">Nenhum registro encontrado</div>';return;}
+
+  document.getElementById('tblMet').innerHTML=`<div style="overflow-x:auto"><table>
+    <thead><tr><th>#</th><th>Nome</th><th>Telefone</th><th>Campanha</th><th>Status Envio</th><th>Etapa no Fluxo</th><th>Data / Hora</th></tr></thead>
+    <tbody>${data.map((e,i)=>{
+      const isEnv=e.status==='Enviado'||e.status==='enviado'||e.status==='sent';
+      const interagiu=phonesFluxo.has(e.telefone);
+      const tag=getTag(e.telefone);
+      return`<tr>
+        <td style="color:var(--text3);font-size:11px;width:36px">${i+1}</td>
+        <td><div class="tn">${e.nome||'—'}</div></td>
+        <td><div class="td2">${e.telefone||'—'}</div></td>
+        <td style="font-size:11px;color:var(--text2)">${e.campanha_nome||'—'}</td>
+        <td><span class="pill" style="${isEnv?'background:rgba(31,212,138,.12);color:var(--green)':'background:rgba(240,82,82,.12);color:var(--red)'}">${e.status||'—'}</span></td>
+        <td>${interagiu?`<span class="pill" style="${tagBg(tag)}">${tag||'respondeu'}</span>`:`<span style="font-size:11px;color:var(--text3)">sem interação</span>`}</td>
+        <td style="font-size:11px;color:var(--text3)">${e.data||''} ${e.hora||''}</td>
+      </tr>`;
+    }).join('')}</tbody>
+  </table></div>`;
+}
+
+loadAll();
+setInterval(loadAll,60000);
 </script>
 </body>
 </html>
