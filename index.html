@@ -432,7 +432,7 @@ function renderCamp(){
 
   const total=envios.length;
   const enviados=envios.filter(e=>{const s=(e.status||'').toLowerCase();return s==='enviado'||s==='sent';});
-  const falha=envios.filter(e=>{const s=(e.status||'').toLowerCase();return s==='falha'||s==='erro'||s==='error'||s==='failure';});
+  const falha=envios.filter(e=>{const s=(e.status||'');return s==='Falha'||s==='falha'||s==='Erro'||s==='erro'||s==='error'||s==='failure';});
 
   // Sem interação: enviados cujo telefone NÃO aparece em eventos_leads
   const phonesFluxo=new Set(leadsData.map(d=>d.lead_phone));
@@ -459,7 +459,7 @@ function renderCampTable(){
 
   let data=enviosData;
   if(campNome) data=data.filter(e=>e.campanha_nome===campNome);
-  if(status) data=data.filter(e=>(e.status||'').toLowerCase()===status.toLowerCase());
+  if(status) data=data.filter(e=>(e.status||'')===status);
   if(interacao==='sim') data=data.filter(e=>phonesFluxo.has(e.telefone));
   if(interacao==='nao') data=data.filter(e=>!phonesFluxo.has(e.telefone));
   if(q) data=data.filter(e=>(e.nome||'').toLowerCase().includes(q)||(e.telefone||'').includes(q));
