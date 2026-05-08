@@ -406,6 +406,9 @@ function toggleTheme(){
   localStorage.setItem('fd_theme',d?'light':'dark');
 }
 
+// CONSTANTES
+const TAGS=['mensagem','clicou no link','baixando agora','baixou o app','confirmou','bloqueou'];
+
 // VIEW
 let view=localStorage.getItem('view')||'cards';
 function setView(v){
@@ -540,7 +543,6 @@ function renderTable(data){
   </table></div>`;
 }
 
-const TAGS=['mensagem','clicou no link','baixando agora','baixou o app','confirmou','bloqueou'];
 function renderKanban(data){
   document.getElementById('kboard').innerHTML=TAGS.map(tag=>{
     const leads=data.filter(d=>(d.tag_name||'').toLowerCase()===tag);
