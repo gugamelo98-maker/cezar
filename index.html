@@ -166,6 +166,9 @@ function toggleTheme(){
   localStorage.setItem('theme',d?'light':'dark');
 }
 
+// ESTADO
+let leadsData=[];
+
 // VIEW
 let view=localStorage.getItem('view')||'cards';
 function setView(v){
@@ -228,8 +231,6 @@ function dedup(data){
   });
   return Object.values(m);
 }
-
-let leadsData=[];
 
 async function loadData(){
   const btn=document.getElementById('rbtn');
