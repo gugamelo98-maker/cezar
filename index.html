@@ -281,6 +281,11 @@ function toggleTheme(){
   localStorage.setItem('theme',d?'light':'dark');
 }
 
+// ESTADO — declarado antes de tudo
+let leadsData=[];
+let enviosData=[];
+let campanhasData=[];
+
 // VIEW
 let view=localStorage.getItem('view')||'cards';
 function setView(v){
@@ -355,11 +360,6 @@ function dedup(data){
   });
   return Object.values(m);
 }
-
-// ESTADO
-let leadsData=[];
-let enviosData=[];
-let campanhasData=[];
 
 // LOAD ALL
 async function loadAll(){
