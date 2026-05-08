@@ -256,6 +256,7 @@ tbody td{padding:12px 16px;font-size:13px;vertical-align:middle}
       <div class="metric-card"><div class="metric-accent" style="background:var(--green)"></div><div class="metric-label">Confirmou</div><div class="metric-val" style="color:var(--green)" id="r-con">—</div></div>
       <div class="metric-card"><div class="metric-accent" style="background:var(--red)"></div><div class="metric-label">Bloqueou</div><div class="metric-val" style="color:var(--red)" id="r-blk">—</div></div>
     </div>
+    <div class="metrics-grid" id="extra-cards" style="grid-template-columns:repeat(auto-fill,minmax(160px,1fr));margin-top:-8px"></div>
 
     <div class="filter-bar">
       <div class="filter-group">
@@ -436,14 +437,15 @@ const pct=v=>`${(v||0).toFixed(1)}%`;
 
 function tagBadge(t){
   if(!t)return`<span class="badge b-muted">—</span>`;
-  const n=t.toLowerCase();
+  const n=(t||'').toLowerCase();
   if(n==='mensagem')return`<span class="badge b-blue">${t}</span>`;
   if(n==='clicou no link')return`<span class="badge b-green">${t}</span>`;
   if(n==='baixando agora')return`<span class="badge b-amber">${t}</span>`;
   if(n==='baixou o app')return`<span class="badge b-purple">${t}</span>`;
   if(n==='confirmou')return`<span class="badge b-green">${t}</span>`;
   if(n==='bloqueou')return`<span class="badge b-red">${t}</span>`;
-  return`<span class="badge b-muted">${t}</span>`;
+  // Tags de campanha e outras — mostra com estilo neutro
+  return`<span class="badge" style="background:rgba(155,163,200,.1);color:var(--muted2);border:1px solid rgba(155,163,200,.2);max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${t}">${t}</span>`;
 }
 function tagColor(t){
   const n=(t||'').toLowerCase();
@@ -504,6 +506,9 @@ async function loadAll(){
 // ===== RETORNOS =====
 function renderRetCards(){
   const d=dedup(leadsData);
+  const tagsFixas=new Set(TAGS);
+
+  // Cards fixos
   const c=tag=>d.filter(x=>(x.tag_name||'').toLowerCase()===tag).length;
   document.getElementById('r-msg').textContent=c('mensagem');
   document.getElementById('r-cli').textContent=c('clicou no link');
@@ -511,13 +516,46 @@ function renderRetCards(){
   document.getElementById('r-bxu').textContent=c('baixou o app');
   document.getElementById('r-con').textContent=c('confirmou');
   document.getElementById('r-blk').textContent=c('bloqueou');
+
+  // Conta "Outras" — tags não mapeadas
+  const outras=d.filter(x=>x.tag_name&&!tagsFixas.has((x.tag_name||'').toLowerCase()));
+  const extraEl=document.getElementById('extra-cards');
+  if(extraEl){
+    if(outras.length>0){
+      extraEl.innerHTML=`<div class="metric-card"><div class="metric-accent" style="background:var(--muted)"></div><div class="metric-label">Outras</div><div class="metric-val" style="color:var(--muted2)">${outras.length}</div><div class="metric-sub">tags não mapeadas</div></div>`;
+    } else {
+      extraEl.innerHTML='';
+    }
+  }
+
+  // Atualiza filtro — adiciona "Outras" se houver
+  const sel=document.getElementById('fTag');
+  const cur=sel.value;
+  sel.innerHTML='<option value="">Todas as etapas</option>';
+  TAGS.forEach(t=>{
+    const o=document.createElement('option');
+    o.value=t;o.textContent=t;
+    if(t===cur)o.selected=true;
+    sel.appendChild(o);
+  });
+  if(outras.length>0){
+    const o=document.createElement('option');
+    o.value='__outras__';o.textContent='Outras';
+    if(cur==='__outras__')o.selected=true;
+    sel.appendChild(o);
+  }
 }
 
 function getRetFiltered(){
   const q=document.getElementById('srchRet').value.toLowerCase().trim();
   const tag=document.getElementById('fTag').value.toLowerCase();
   let data=dedup(leadsData);
-  if(tag)data=data.filter(d=>(d.tag_name||'').toLowerCase()===tag);
+  if(tag==='__outras__'){
+    const tagsFixas=new Set(TAGS);
+    data=data.filter(d=>d.tag_name&&!tagsFixas.has((d.tag_name||'').toLowerCase()));
+  } else if(tag){
+    data=data.filter(d=>(d.tag_name||'').toLowerCase()===tag.toLowerCase());
+  }
   if(q)data=data.filter(d=>(d.lead_name||'').toLowerCase().includes(q)||(d.lead_phone||'').includes(q));
   return data;
 }
