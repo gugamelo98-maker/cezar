@@ -3,65 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard — Cezar</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<title>Retornos — Cezar</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root[data-theme="dark"]{--bg:#0b0d12;--bg2:#13161e;--bg3:#1a1e2a;--border:#1e2338;--text:#e4e8f4;--text2:#6e7a9a;--text3:#343d5a;--accent:#4f8ef7;--green:#1fd48a;--yellow:#f5a623;--red:#f05252;--purple:#7b61ff;--sidebar:#0f1118;--sh:0 2px 16px rgba(0,0,0,.4);}
-:root[data-theme="light"]{--bg:#f0f2f9;--bg2:#fff;--bg3:#f5f6fc;--border:#e0e4f0;--text:#0f1120;--text2:#5a6280;--text3:#9aa0c0;--accent:#3a7af4;--green:#0ea86e;--yellow:#c98a00;--red:#dc3535;--purple:#6a50f0;--sidebar:#fff;--sh:0 2px 12px rgba(0,0,0,.07);}
+:root[data-theme="dark"]{--bg:#0b0d12;--bg2:#13161e;--bg3:#1a1e2a;--border:#1e2338;--text:#e4e8f4;--text2:#6e7a9a;--text3:#343d5a;--accent:#4f8ef7;--green:#1fd48a;--yellow:#f5a623;--red:#f05252;--purple:#7b61ff;--sh:0 2px 16px rgba(0,0,0,.4);}
+:root[data-theme="light"]{--bg:#f0f2f9;--bg2:#fff;--bg3:#f5f6fc;--border:#e0e4f0;--text:#0f1120;--text2:#5a6280;--text3:#9aa0c0;--accent:#3a7af4;--green:#0ea86e;--yellow:#c98a00;--red:#dc3535;--purple:#6a50f0;--sh:0 2px 12px rgba(0,0,0,.07);}
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;transition:background .3s,color .3s;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
 
-/* SIDEBAR */
-.sidebar{width:220px;min-height:100vh;background:var(--sidebar);border-right:1px solid var(--border);display:flex;flex-direction:column;position:fixed;top:0;left:0;z-index:200;}
-.sb-logo{padding:20px 18px 16px;border-bottom:1px solid var(--border);}
-.sb-logo-txt{font-family:'Syne',sans-serif;font-weight:800;font-size:16px;letter-spacing:-.3px;display:flex;align-items:center;gap:8px;}
-.sb-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);animation:bl 2s infinite;}
+header{padding:16px 28px;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:17px;display:flex;align-items:center;gap:8px;}
+.ldot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);animation:bl 2s infinite;}
 @keyframes bl{0%,100%{opacity:1;}50%{opacity:.3;}}
-.sb-sub{font-size:10px;color:var(--text3);margin-top:4px;letter-spacing:.5px;text-transform:uppercase;}
-.sb-nav{flex:1;padding:14px 10px;}
-.sb-sec{font-size:9px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--text3);padding:0 8px;margin-bottom:6px;margin-top:14px;}
-.sb-sec:first-child{margin-top:0;}
-.sb-item{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:8px;cursor:pointer;color:var(--text2);font-size:13px;font-weight:500;border:none;background:transparent;width:100%;text-align:left;font-family:'DM Sans',sans-serif;transition:all .2s;}
-.sb-item:hover{background:var(--bg3);color:var(--text);}
-.sb-item.active{background:var(--bg3);color:var(--text);}
-.sb-item.active .sico{color:var(--accent);}
-.sico{width:16px;text-align:center;font-size:13px;flex-shrink:0;}
-.scnt{margin-left:auto;background:var(--bg);border-radius:100px;padding:1px 7px;font-size:10px;color:var(--text3);}
-.sb-item.active .scnt{background:var(--border);color:var(--text2);}
-.vtog{margin:0 10px 10px;display:flex;background:var(--bg3);border-radius:8px;padding:3px;border:1px solid var(--border);}
-.vtbtn{flex:1;padding:6px;border-radius:6px;border:none;background:transparent;color:var(--text2);font-size:11px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:4px;}
-.vtbtn.active{background:var(--bg2);color:var(--text);box-shadow:0 1px 4px rgba(0,0,0,.15);}
-.sb-bot{padding:12px;border-top:1px solid var(--border);}
-.sb-theme{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;cursor:pointer;color:var(--text2);font-size:12px;font-weight:500;border:none;background:transparent;width:100%;font-family:'DM Sans',sans-serif;transition:all .2s;}
-.sb-theme:hover{background:var(--bg3);}
-.livewrap{display:flex;align-items:center;gap:6px;padding:5px 10px;font-size:11px;color:var(--green);margin-bottom:4px;}
-.livedot{width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);animation:bl 1.5s infinite;}
-
-/* CONTENT */
-.content{margin-left:220px;flex:1;min-height:100vh;display:flex;flex-direction:column;}
-.topbar{padding:13px 26px;border-bottom:1px solid var(--border);background:var(--bg2);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
-.tbtitle{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;}
-.tbright{display:flex;align-items:center;gap:10px;}
+.hright{display:flex;align-items:center;gap:10px;}
 #lupd{font-size:11px;color:var(--text3);}
+.gbtn{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:7px 13px;color:var(--text2);font-size:12px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:5px;transition:all .2s;}
+.gbtn:hover{color:var(--text);}
 .pbtn{background:var(--accent);border:none;border-radius:8px;padding:7px 15px;color:#fff;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:5px;transition:all .2s;}
 .pbtn:hover{opacity:.85;}
 .pbtn.busy{opacity:.6;pointer-events:none;}
 .sp{display:inline-block;width:11px;height:11px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:rot .6s linear infinite;}
 @keyframes rot{to{transform:rotate(360deg);}}
 
-.main{padding:20px 26px;flex:1;}
-.page{display:none;}.page.active{display:block;}
+main{padding:24px 28px;max-width:1400px;margin:0 auto;}
+
+/* VIEW TOGGLE */
+.vtrow{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+.vtrow h2{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;}
+.vtog{display:flex;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:3px;gap:2px;}
+.vtbtn{padding:6px 14px;border-radius:6px;border:none;background:transparent;color:var(--text2);font-size:12px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.vtbtn.active{background:var(--bg3);color:var(--text);}
 
 /* CARDS */
-.cgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px;}
-.cgrid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px;}
-.mcard{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;box-shadow:var(--sh);animation:fu .35s ease forwards;opacity:0;}
-.mcard:nth-child(1){animation-delay:.05s;}.mcard:nth-child(2){animation-delay:.1s;}.mcard:nth-child(3){animation-delay:.15s;}.mcard:nth-child(4){animation-delay:.2s;}
+.cgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:20px;}
+.mcard{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;box-shadow:var(--sh);border-top:2px solid transparent;animation:fu .35s ease forwards;opacity:0;}
+.mcard:nth-child(1){animation-delay:.05s;border-top-color:var(--accent);}
+.mcard:nth-child(2){animation-delay:.08s;border-top-color:var(--green);}
+.mcard:nth-child(3){animation-delay:.11s;border-top-color:var(--yellow);}
+.mcard:nth-child(4){animation-delay:.14s;border-top-color:var(--purple);}
+.mcard:nth-child(5){animation-delay:.17s;border-top-color:var(--green);}
+.mcard:nth-child(6){animation-delay:.2s;border-top-color:var(--red);}
 @keyframes fu{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
-.clbl{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:8px;}
-.cval{font-family:'Syne',sans-serif;font-size:30px;font-weight:800;letter-spacing:-1px;line-height:1;margin-bottom:5px;}
-.csub{font-size:11px;color:var(--text2);}
+.clbl{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:6px;}
+.cval{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;letter-spacing:-1px;line-height:1;}
 
 /* TOOLBAR */
 .toolbar{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
@@ -82,7 +66,6 @@ tbody td{padding:11px 14px;font-size:12px;vertical-align:middle;}
 .tn{font-weight:500;font-size:13px;}
 .td2{color:var(--text2);font-size:11px;margin-top:1px;}
 .pill{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:100px;font-size:10px;font-weight:600;}
-.pill::before{content:'';width:4px;height:4px;border-radius:50%;background:currentColor;}
 
 /* KANBAN */
 .kboard{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;animation:fu .35s .15s ease forwards;opacity:0;}
@@ -90,7 +73,7 @@ tbody td{padding:11px 14px;font-size:12px;vertical-align:middle;}
 .khead{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
 .ktitle{font-size:12px;font-weight:600;}
 .kcnt{background:var(--bg3);border-radius:100px;padding:2px 8px;font-size:10px;color:var(--text2);}
-.kbody{padding:10px;max-height:400px;overflow-y:auto;}
+.kbody{padding:10px;max-height:420px;overflow-y:auto;}
 .kcard{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-bottom:8px;}
 .kcard:last-child{margin-bottom:0;}
 .kname{font-size:12px;font-weight:500;}
@@ -98,130 +81,74 @@ tbody td{padding:11px 14px;font-size:12px;vertical-align:middle;}
 .kdate{font-size:10px;color:var(--text3);margin-top:3px;}
 .kempty{padding:20px;text-align:center;color:var(--text3);font-size:11px;}
 
-/* EMPTY / LOAD */
 .empty{padding:40px 20px;text-align:center;color:var(--text3);font-size:12px;}
 .ld{padding:40px 20px;text-align:center;color:var(--text3);}
 .lsp{width:18px;height:18px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:rot .6s linear infinite;margin:0 auto 10px;display:block;}
 .errbox{background:rgba(240,82,82,.08);border:1px solid rgba(240,82,82,.2);border-radius:10px;padding:12px 16px;color:var(--red);font-size:12px;margin-bottom:16px;display:none;}
 
-@media(max-width:900px){.content{margin-left:0;}.sidebar{display:none;}.cgrid,.cgrid3{grid-template-columns:1fr 1fr;}.main{padding:14px;}}
+@media(max-width:1100px){.cgrid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:700px){.cgrid{grid-template-columns:repeat(2,1fr);}.kboard{grid-template-columns:1fr;}main{padding:14px;}}
 </style>
 </head>
 <body>
 
-<aside class="sidebar">
-  <div class="sb-logo">
-    <div class="sb-logo-txt"><div class="sb-dot"></div>Cezar · Dashboard</div>
-    <div class="sb-sub">Análise de Leads</div>
+<header>
+  <div class="logo"><div class="ldot"></div>Cezar · Retornos</div>
+  <div class="hright">
+    <span id="lupd"></span>
+    <button class="gbtn" onclick="toggleTheme()"><span id="tico">☀️</span><span id="ttxt">Modo claro</span></button>
+    <button class="pbtn" id="rbtn" onclick="loadData()">↻ Atualizar</button>
   </div>
-  <nav class="sb-nav">
-    <div class="sb-sec">Fluxo</div>
-    <button class="sb-item active" id="nav-leads" onclick="goPage('leads')">
-      <span class="sico">◈</span>Retornos<span class="scnt" id="cnt-leads">0</span>
-    </button>
-    <div class="sb-sec">Campanhas</div>
-    <button class="sb-item" id="nav-camp" onclick="goPage('camp')">
-      <span class="sico">◉</span>Métricas<span class="scnt" id="cnt-camp">0</span>
-    </button>
-  </nav>
+</header>
 
-  <div id="vtogwrap" style="padding:0 10px 10px;">
-    <div style="font-size:9px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--text3);padding:0 8px;margin-bottom:6px;">Visualização</div>
+<main>
+  <div class="errbox" id="errbox"></div>
+
+  <!-- CARDS -->
+  <div class="cgrid">
+    <div class="mcard"><div class="clbl">Mensagem</div><div class="cval" style="color:var(--accent)" id="c-msg">—</div></div>
+    <div class="mcard"><div class="clbl">Clicou no Link</div><div class="cval" style="color:var(--green)" id="c-cli">—</div></div>
+    <div class="mcard"><div class="clbl">Baixando Agora</div><div class="cval" style="color:var(--yellow)" id="c-bnd">—</div></div>
+    <div class="mcard"><div class="clbl">Baixou o App</div><div class="cval" style="color:var(--purple)" id="c-bxu">—</div></div>
+    <div class="mcard"><div class="clbl">Confirmou</div><div class="cval" style="color:var(--green)" id="c-con">—</div></div>
+    <div class="mcard"><div class="clbl">Bloqueou</div><div class="cval" style="color:var(--red)" id="c-blk">—</div></div>
+  </div>
+
+  <!-- TOGGLE + TOOLBAR -->
+  <div class="vtrow">
+    <div style="font-size:13px;color:var(--text2)" id="totalLbl"></div>
     <div class="vtog">
       <button class="vtbtn active" id="vt-cards" onclick="setView('cards')">▦ Cards</button>
       <button class="vtbtn" id="vt-kanban" onclick="setView('kanban')">⊞ Kanban</button>
     </div>
   </div>
 
-  <div class="sb-bot">
-    <div class="livewrap"><div class="livedot"></div>ao vivo · <span id="lupd2"></span></div>
-    <button class="sb-theme" onclick="toggleTheme()"><span id="tico">☀️</span><span id="ttxt"> Modo claro</span></button>
+  <div class="toolbar">
+    <input class="fsearch" id="srch" type="text" placeholder="Buscar nome ou telefone..." oninput="render()">
+    <select class="fsel" id="fTag" onchange="render()">
+      <option value="">Todas as etapas</option>
+      <option value="mensagem">mensagem</option>
+      <option value="clicou no link">clicou no link</option>
+      <option value="baixando agora">baixando agora</option>
+      <option value="baixou o app">baixou o app</option>
+      <option value="confirmou">confirmou</option>
+      <option value="bloqueou">bloqueou</option>
+    </select>
+    <span class="tlbl" id="tlbl"></span>
   </div>
-</aside>
 
-<div class="content">
-  <div class="topbar">
-    <div class="tbtitle" id="topTitle">Retornos do Fluxo</div>
-    <div class="tbright">
-      <span id="lupd"></span>
-      <button class="pbtn" id="rbtn" onclick="loadAll()">↻ Atualizar</button>
+  <!-- CARDS VIEW -->
+  <div id="vw-cards">
+    <div class="tbox">
+      <div id="tblLeads"><div class="ld"><span class="lsp"></span>Carregando...</div></div>
     </div>
   </div>
 
-  <div class="main">
-    <div class="errbox" id="errbox"></div>
-
-    <!-- RETORNOS -->
-    <div class="page active" id="page-leads">
-      <div class="cgrid">
-        <div class="mcard"><div class="clbl">Mensagem</div><div class="cval" style="color:var(--accent)" id="m-msg">—</div><div class="csub">leads</div></div>
-        <div class="mcard"><div class="clbl">Clicou no Link</div><div class="cval" style="color:var(--green)" id="m-cli">—</div><div class="csub">leads</div></div>
-        <div class="mcard"><div class="clbl">Baixando / Baixou</div><div class="cval" style="color:var(--yellow)" id="m-bai">—</div><div class="csub">leads</div></div>
-        <div class="mcard"><div class="clbl">Confirmou</div><div class="cval" style="color:var(--purple)" id="m-con">—</div><div class="csub">leads</div></div>
-      </div>
-
-      <div class="toolbar">
-        <input class="fsearch" id="srchLeads" type="text" placeholder="Buscar nome ou telefone..." oninput="renderLeads()">
-        <select class="fsel" id="fTag" onchange="renderLeads()">
-          <option value="">Todas as etapas</option>
-          <option value="mensagem">mensagem</option>
-          <option value="clicou no link">clicou no link</option>
-          <option value="baixando agora">baixando agora</option>
-          <option value="baixou o app">baixou o app</option>
-          <option value="confirmou">confirmou</option>
-          <option value="bloqueou">bloqueou</option>
-        </select>
-        <span class="tlbl" id="lblLeads"></span>
-      </div>
-
-      <div id="vw-cards">
-        <div class="tbox">
-          <div id="tblLeads"><div class="ld"><span class="lsp"></span>Carregando...</div></div>
-        </div>
-      </div>
-
-      <div id="vw-kanban" style="display:none;">
-        <div class="kboard" id="kboard"><div class="ld"><span class="lsp"></span>Carregando...</div></div>
-      </div>
-    </div>
-
-    <!-- CAMPANHAS -->
-    <div class="page" id="page-camp">
-      <div class="toolbar" style="margin-bottom:18px;">
-        <label style="font-size:12px;color:var(--text2);">Campanha:</label>
-        <select class="fsel" id="campSel" onchange="renderCamp()">
-          <option value="">Todas as campanhas</option>
-        </select>
-      </div>
-
-      <div class="cgrid">
-        <div class="mcard"><div class="clbl">Total da Campanha</div><div class="cval" style="color:var(--accent)" id="cs-tot">—</div><div class="csub">leads importados</div></div>
-        <div class="mcard"><div class="clbl">Enviados</div><div class="cval" style="color:var(--green)" id="cs-env">—</div><div class="csub" id="cs-env-p">—</div></div>
-        <div class="mcard"><div class="clbl">Falha</div><div class="cval" style="color:var(--red)" id="cs-fal">—</div><div class="csub" id="cs-fal-p">—</div></div>
-        <div class="mcard"><div class="clbl">Sem Interação</div><div class="cval" style="color:var(--yellow)" id="cs-sem">—</div><div class="csub">enviados sem retorno no fluxo</div></div>
-      </div>
-
-      <div class="toolbar">
-        <input class="fsearch" id="srchCamp" type="text" placeholder="Buscar nome ou telefone..." oninput="renderCampTable()">
-        <select class="fsel" id="fStatus" onchange="renderCampTable()">
-          <option value="">Todos os status</option>
-          <option value="Enviado">Enviado</option>
-          <option value="Falha">Falha</option>
-        </select>
-        <select class="fsel" id="fInteracao" onchange="renderCampTable()">
-          <option value="">Toda interação</option>
-          <option value="sim">Com interação</option>
-          <option value="nao">Sem interação</option>
-        </select>
-        <span class="tlbl" id="lblCamp"></span>
-      </div>
-
-      <div class="tbox">
-        <div id="tblCamp"><div class="ld"><span class="lsp"></span>Carregando...</div></div>
-      </div>
-    </div>
+  <!-- KANBAN VIEW -->
+  <div id="vw-kanban" style="display:none;">
+    <div class="kboard" id="kboard"></div>
   </div>
-</div>
+</main>
 
 <script>
 const SB='https://vdloxobxrtfitbsuwzyw.supabase.co';
@@ -230,122 +157,90 @@ const SK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6I
 // TEMA
 const saved=localStorage.getItem('theme')||'dark';
 document.documentElement.setAttribute('data-theme',saved);
-if(saved==='light'){document.getElementById('tico').textContent='🌙';document.getElementById('ttxt').textContent=' Modo escuro';}
+if(saved==='light'){document.getElementById('tico').textContent='🌙';document.getElementById('ttxt').textContent='Modo escuro';}
 function toggleTheme(){
   const d=document.documentElement.getAttribute('data-theme')==='dark';
   document.documentElement.setAttribute('data-theme',d?'light':'dark');
   document.getElementById('tico').textContent=d?'🌙':'☀️';
-  document.getElementById('ttxt').textContent=d?' Modo escuro':' Modo claro';
+  document.getElementById('ttxt').textContent=d?'Modo escuro':'Modo claro';
   localStorage.setItem('theme',d?'light':'dark');
 }
 
 // VIEW
-let currentView=localStorage.getItem('view')||'cards';
+let view=localStorage.getItem('view')||'cards';
 function setView(v){
-  currentView=v;localStorage.setItem('view',v);
+  view=v;localStorage.setItem('view',v);
   document.getElementById('vt-cards').classList.toggle('active',v==='cards');
   document.getElementById('vt-kanban').classList.toggle('active',v==='kanban');
   document.getElementById('vw-cards').style.display=v==='cards'?'block':'none';
   document.getElementById('vw-kanban').style.display=v==='kanban'?'block':'none';
-  if(v==='kanban') renderKanban();
+  render();
 }
-setView(currentView);
+setView(view);
 
-// PÁGINA
-function goPage(p){
-  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
-  document.getElementById('page-'+p).classList.add('active');
-  document.querySelectorAll('.sb-item').forEach(x=>x.classList.remove('active'));
-  document.getElementById('nav-'+p).classList.add('active');
-  document.getElementById('topTitle').textContent=p==='leads'?'Retornos do Fluxo':'Métricas de Campanha';
-  document.getElementById('vtogwrap').style.display=p==='leads'?'block':'none';
-}
-
-// FORMATADORES
 const fdt=d=>{if(!d)return'—';const s=d.endsWith('Z')||d.includes('+')?d:d+'Z';return new Date(s).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});};
-const pct=v=>`${(v||0).toFixed(1)}%`;
 
-// TAG CLASS
-function tagCls(t){
-  if(!t)return'';const n=t.toLowerCase();
-  if(n.includes('mensagem'))return'color:var(--accent)';
-  if(n.includes('clicou'))return'color:var(--green)';
-  if(n.includes('baixando'))return'color:var(--yellow)';
-  if(n.includes('baixou'))return'color:var(--purple)';
-  if(n.includes('confirmou'))return'color:var(--green)';
-  if(n.includes('bloqueou'))return'color:var(--red)';
-  return'color:var(--text2)';
-}
 function tagBg(t){
-  if(!t)return'background:var(--bg3);color:var(--text2)';const n=t.toLowerCase();
-  if(n.includes('mensagem'))return'background:rgba(79,142,247,.12);color:var(--accent)';
-  if(n.includes('clicou'))return'background:rgba(31,212,138,.12);color:var(--green)';
-  if(n.includes('baixando'))return'background:rgba(245,166,35,.12);color:var(--yellow)';
-  if(n.includes('baixou'))return'background:rgba(123,97,255,.12);color:var(--purple)';
-  if(n.includes('confirmou'))return'background:rgba(31,212,138,.15);color:var(--green)';
-  if(n.includes('bloqueou'))return'background:rgba(240,82,82,.12);color:var(--red)';
+  if(!t)return'background:var(--bg3);color:var(--text2)';
+  const n=t.toLowerCase();
+  if(n==='mensagem')return'background:rgba(79,142,247,.12);color:var(--accent)';
+  if(n==='clicou no link')return'background:rgba(31,212,138,.12);color:var(--green)';
+  if(n==='baixando agora')return'background:rgba(245,166,35,.12);color:var(--yellow)';
+  if(n==='baixou o app')return'background:rgba(123,97,255,.12);color:var(--purple)';
+  if(n==='confirmou')return'background:rgba(31,212,138,.15);color:var(--green)';
+  if(n==='bloqueou')return'background:rgba(240,82,82,.12);color:var(--red)';
   return'background:var(--bg3);color:var(--text2)';
+}
+function tagColor(t){
+  if(!t)return'var(--text2)';const n=t.toLowerCase();
+  if(n==='mensagem')return'var(--accent)';
+  if(n==='clicou no link')return'var(--green)';
+  if(n==='baixando agora')return'var(--yellow)';
+  if(n==='baixou o app')return'var(--purple)';
+  if(n==='confirmou')return'var(--green)';
+  if(n==='bloqueou')return'var(--red)';
+  return'var(--text2)';
 }
 
 // FETCH COM PAGINAÇÃO COMPLETA
-async function fetchAll(table, params=''){
-  let all=[];
-  let from=0;
-  const size=1000;
+async function fetchAll(table,params=''){
+  let all=[];let from=0;const size=1000;
   while(true){
     const r=await fetch(`${SB}/rest/v1/${table}?${params}&limit=${size}&offset=${from}`,{
-      headers:{apikey:SK,Authorization:`Bearer ${SK}`,Range:`${from}-${from+size-1}`,'Range-Unit':'items'}
+      headers:{apikey:SK,Authorization:`Bearer ${SK}`}
     });
-    if(!r.ok) throw new Error(`HTTP ${r.status} — ${table}`);
+    if(!r.ok)throw new Error(`HTTP ${r.status} — ${table}`);
     const data=await r.json();
-    if(!Array.isArray(data)||data.length===0) break;
+    if(!Array.isArray(data)||data.length===0)break;
     all=[...all,...data];
-    if(data.length<size) break;
+    if(data.length<size)break;
     from+=size;
   }
   return all;
 }
 
-// ESTADO
-let leadsData=[];
-let enviosData=[];
-let campanhasData=[];
-
-// DEDUPLICAR LEADS — pega último evento por telefone
+// DEDUPLICAR — pega última tag por telefone
 function dedup(data){
   const m={};
   data.forEach(d=>{
     const k=d.lead_phone||d.lead_id||d.id;
-    if(!m[k]||new Date(d.criado_em)>new Date(m[k].criado_em)) m[k]=d;
+    if(!m[k]||new Date(d.criado_em)>new Date(m[k].criado_em))m[k]=d;
   });
   return Object.values(m);
 }
 
-// LOAD ALL
-async function loadAll(){
+let leadsData=[];
+
+async function loadData(){
   const btn=document.getElementById('rbtn');
   btn.classList.add('busy');btn.innerHTML='<span class="sp"></span> Atualizando';
   document.getElementById('errbox').style.display='none';
   try{
-    const [leads,envios,campanhas]=await Promise.all([
-      fetchAll('eventos_leads','order=criado_em.desc'),
-      fetchAll('envios','order=criado_em.desc'),
-      fetchAll('campanhas','order=nome.asc'),
-    ]);
-    leadsData=leads;
-    enviosData=envios;
-    campanhasData=campanhas;
-
-    renderMetrics();
-    renderLeads();
-    populateCampSelect();
-    renderCamp();
-
-    document.getElementById('cnt-leads').textContent=dedup(leads).length;
-    document.getElementById('cnt-camp').textContent=campanhas.length;
-    const t=new Date().toLocaleTimeString('pt-BR',{timeZone:'America/Sao_Paulo',hour:'2-digit',minute:'2-digit'});
-    document.getElementById('lupd').textContent=t;
-    document.getElementById('lupd2').textContent=t;
+    leadsData=await fetchAll('eventos_leads','order=criado_em.desc');
+    renderCards();
+    render();
+    document.getElementById('lupd').textContent=
+      new Date().toLocaleTimeString('pt-BR',{timeZone:'America/Sao_Paulo',hour:'2-digit',minute:'2-digit'});
   }catch(e){
     const b=document.getElementById('errbox');b.style.display='block';
     b.textContent=`Erro: ${e.message}`;
@@ -353,52 +248,55 @@ async function loadAll(){
   btn.classList.remove('busy');btn.innerHTML='↻ Atualizar';
 }
 
-// MÉTRICAS LEADS
-function renderMetrics(){
+function renderCards(){
   const d=dedup(leadsData);
-  const c=tag=>d.filter(x=>(x.tag_name||'').toLowerCase().includes(tag)).length;
-  document.getElementById('m-msg').textContent=c('mensagem');
-  document.getElementById('m-cli').textContent=c('clicou');
-  document.getElementById('m-bai').textContent=c('baixou')+c('baixando');
-  document.getElementById('m-con').textContent=c('confirmou');
+  const c=tag=>d.filter(x=>(x.tag_name||'').toLowerCase()===tag).length;
+  document.getElementById('c-msg').textContent=c('mensagem');
+  document.getElementById('c-cli').textContent=c('clicou no link');
+  document.getElementById('c-bnd').textContent=c('baixando agora');
+  document.getElementById('c-bxu').textContent=c('baixou o app');
+  document.getElementById('c-con').textContent=c('confirmou');
+  document.getElementById('c-blk').textContent=c('bloqueou');
 }
 
-// RENDER LEADS (CARDS)
-function renderLeads(){
-  const q=document.getElementById('srchLeads').value.toLowerCase().trim();
+function getFiltered(){
+  const q=document.getElementById('srch').value.toLowerCase().trim();
   const tag=document.getElementById('fTag').value.toLowerCase();
   let data=dedup(leadsData);
-  if(tag) data=data.filter(d=>(d.tag_name||'').toLowerCase()===tag);
-  if(q) data=data.filter(d=>(d.lead_name||'').toLowerCase().includes(q)||(d.lead_phone||'').includes(q));
-  document.getElementById('lblLeads').textContent=`${data.length} lead${data.length!==1?'s':''}`;
-  if(currentView==='kanban'){renderKanban(data);return;}
+  if(tag)data=data.filter(d=>(d.tag_name||'').toLowerCase()===tag);
+  if(q)data=data.filter(d=>(d.lead_name||'').toLowerCase().includes(q)||(d.lead_phone||'').includes(q));
+  return data;
+}
+
+function render(){
+  const data=getFiltered();
+  document.getElementById('tlbl').textContent=`${data.length} lead${data.length!==1?'s':''}`;
+  if(view==='kanban'){renderKanban(data);}else{renderTable(data);}
+}
+
+function renderTable(data){
   if(!data.length){document.getElementById('tblLeads').innerHTML='<div class="empty">Nenhum lead encontrado</div>';return;}
   document.getElementById('tblLeads').innerHTML=`<div style="overflow-x:auto"><table>
-    <thead><tr><th>#</th><th>Nome / Telefone</th><th>Etapa atual</th><th>Fluxo</th><th>Última interação</th></tr></thead>
+    <thead><tr><th>#</th><th>Nome</th><th>Telefone</th><th>Etapa</th><th>Fluxo</th><th>Última interação</th></tr></thead>
     <tbody>${data.map((d,i)=>`<tr>
-      <td style="color:var(--text3);font-size:11px;">${i+1}</td>
-      <td><div class="tn">${d.lead_name||'—'}</div><div class="td2">${d.lead_phone||''}</div></td>
+      <td style="color:var(--text3);font-size:11px;width:40px">${i+1}</td>
+      <td><div class="tn">${d.lead_name||'—'}</div></td>
+      <td><div class="td2">${d.lead_phone||'—'}</div></td>
       <td><span class="pill" style="${tagBg(d.tag_name)}">${d.tag_name||'—'}</span></td>
-      <td style="font-size:12px;color:var(--text2);">${d.fluxo||'—'}</td>
-      <td style="font-size:11px;color:var(--text3);">${fdt(d.criado_em)}</td>
+      <td style="font-size:12px;color:var(--text2)">${d.fluxo||'—'}</td>
+      <td style="font-size:11px;color:var(--text3)">${fdt(d.criado_em)}</td>
     </tr>`).join('')}</tbody>
   </table></div>`;
 }
 
-// RENDER KANBAN
 const TAGS=['mensagem','clicou no link','baixando agora','baixou o app','confirmou','bloqueou'];
-function renderKanban(dataOverride){
-  const q=document.getElementById('srchLeads').value.toLowerCase().trim();
-  const tagF=document.getElementById('fTag').value.toLowerCase();
-  let data=dataOverride||dedup(leadsData);
-  if(tagF) data=data.filter(d=>(d.tag_name||'').toLowerCase()===tagF);
-  if(q) data=data.filter(d=>(d.lead_name||'').toLowerCase().includes(q)||(d.lead_phone||'').includes(q));
-
+function renderKanban(data){
   document.getElementById('kboard').innerHTML=TAGS.map(tag=>{
     const leads=data.filter(d=>(d.tag_name||'').toLowerCase()===tag);
+    const color=tagColor(tag);
     return`<div class="kcol">
       <div class="khead">
-        <span class="ktitle" style="${tagCls(tag)}">${tag}</span>
+        <span class="ktitle" style="color:${color}">${tag}</span>
         <span class="kcnt">${leads.length}</span>
       </div>
       <div class="kbody">${leads.length?leads.map(d=>`
@@ -406,87 +304,14 @@ function renderKanban(dataOverride){
           <div class="kname">${d.lead_name||'—'}</div>
           <div class="kphone">${d.lead_phone||''}</div>
           <div class="kdate">${fdt(d.criado_em)}</div>
-        </div>`).join(''):'<div class="kempty">nenhum lead</div>'}</div>
+        </div>`).join(''):'<div class="kempty">nenhum lead</div>'}
+      </div>
     </div>`;
   }).join('');
 }
 
-// SELETOR DE CAMPANHAS
-function populateCampSelect(){
-  const sel=document.getElementById('campSel');
-  const cur=sel.value;
-  sel.innerHTML='<option value="">Todas as campanhas</option>';
-  campanhasData.forEach(c=>{
-    const o=document.createElement('option');
-    o.value=c.nome;o.textContent=c.nome;
-    if(c.nome===cur)o.selected=true;
-    sel.appendChild(o);
-  });
-}
-
-// RENDER CAMPANHA
-function renderCamp(){
-  const campNome=document.getElementById('campSel').value;
-  let envios=enviosData;
-  if(campNome) envios=envios.filter(e=>e.campanha_nome===campNome);
-
-  const total=envios.length;
-  const enviados=envios.filter(e=>{const s=(e.status||'').toLowerCase();return s==='enviado'||s==='sent';});
-  const falha=envios.filter(e=>{const s=(e.status||'');return s==='Falha'||s==='falha'||s==='Erro'||s==='erro'||s==='error'||s==='failure';});
-
-  // Sem interação: enviados cujo telefone NÃO aparece em eventos_leads
-  const phonesFluxo=new Set(leadsData.map(d=>d.lead_phone));
-  const semInteracao=enviados.filter(e=>!phonesFluxo.has(e.telefone));
-
-  document.getElementById('cs-tot').textContent=total;
-  document.getElementById('cs-env').textContent=enviados.length;
-  document.getElementById('cs-env-p').textContent=pct(total?enviados.length/total*100:0)+' do total';
-  document.getElementById('cs-fal').textContent=falha.length;
-  document.getElementById('cs-fal-p').textContent=pct(total?falha.length/total*100:0)+' do total';
-  document.getElementById('cs-sem').textContent=semInteracao.length;
-
-  renderCampTable();
-}
-
-function renderCampTable(){
-  const campNome=document.getElementById('campSel').value;
-  const q=document.getElementById('srchCamp').value.toLowerCase().trim();
-  const status=document.getElementById('fStatus').value;
-  const interacao=document.getElementById('fInteracao').value;
-
-  const phonesFluxo=new Set(leadsData.map(d=>d.lead_phone));
-  const getTag=phone=>{const l=dedup(leadsData).find(d=>d.lead_phone===phone);return l?l.tag_name:'';};
-
-  let data=enviosData;
-  if(campNome) data=data.filter(e=>e.campanha_nome===campNome);
-  if(status) data=data.filter(e=>(e.status||'')===status);
-  if(interacao==='sim') data=data.filter(e=>phonesFluxo.has(e.telefone));
-  if(interacao==='nao') data=data.filter(e=>!phonesFluxo.has(e.telefone));
-  if(q) data=data.filter(e=>(e.nome||'').toLowerCase().includes(q)||(e.telefone||'').includes(q));
-
-  document.getElementById('lblCamp').textContent=`${data.length} registro${data.length!==1?'s':''}`;
-  if(!data.length){document.getElementById('tblCamp').innerHTML='<div class="empty">Nenhum registro encontrado</div>';return;}
-
-  document.getElementById('tblCamp').innerHTML=`<div style="overflow-x:auto"><table>
-    <thead><tr><th>#</th><th>Nome / Telefone</th><th>Campanha</th><th>Status Envio</th><th>Interação no Fluxo</th><th>Data / Hora</th></tr></thead>
-    <tbody>${data.map((e,i)=>{
-      const isEnv=(e.status||'').toLowerCase()==='enviado'||(e.status||'').toLowerCase()==='sent';
-      const interagiu=phonesFluxo.has(e.telefone);
-      const tag=getTag(e.telefone);
-      return`<tr>
-        <td style="color:var(--text3);font-size:11px;">${i+1}</td>
-        <td><div class="tn">${e.nome||'—'}</div><div class="td2">${e.telefone||''}</div></td>
-        <td style="font-size:11px;color:var(--text2);">${e.campanha_nome||'—'}</td>
-        <td><span class="pill" style="${isEnv?'background:rgba(31,212,138,.12);color:var(--green)':'background:rgba(240,82,82,.12);color:var(--red)'}">${e.status||'—'}</span></td>
-        <td>${interagiu?`<span class="pill" style="${tagBg(tag)}">${tag||'sim'}</span>`:`<span style="font-size:11px;color:var(--text3);">sem interação</span>`}</td>
-        <td style="font-size:11px;color:var(--text3);">${e.data||''} ${e.hora||''}</td>
-      </tr>`;
-    }).join('')}</tbody>
-  </table></div>`;
-}
-
-loadAll();
-setInterval(loadAll,60000);
+loadData();
+setInterval(loadData,60000);
 </script>
 </body>
 </html>
