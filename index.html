@@ -20,32 +20,29 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 @keyframes bl{0%,100%{opacity:1;}50%{opacity:.3;}}
 .sb-sub{font-size:10px;color:var(--text3);margin-top:4px;letter-spacing:.5px;text-transform:uppercase;}
 .sb-nav{flex:1;padding:14px 10px;}
-.sb-section{font-size:9px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--text3);padding:0 8px;margin-bottom:6px;margin-top:14px;}
-.sb-section:first-child{margin-top:0;}
-.sb-item{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:8px;cursor:pointer;transition:all .2s;color:var(--text2);font-size:13px;font-weight:500;border:none;background:transparent;width:100%;text-align:left;font-family:'DM Sans',sans-serif;}
+.sb-sec{font-size:9px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--text3);padding:0 8px;margin-bottom:6px;margin-top:14px;}
+.sb-sec:first-child{margin-top:0;}
+.sb-item{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:8px;cursor:pointer;color:var(--text2);font-size:13px;font-weight:500;border:none;background:transparent;width:100%;text-align:left;font-family:'DM Sans',sans-serif;transition:all .2s;}
 .sb-item:hover{background:var(--bg3);color:var(--text);}
 .sb-item.active{background:var(--bg3);color:var(--text);}
-.sb-item.active .sb-ico{color:var(--accent);}
-.sb-ico{width:16px;text-align:center;font-size:13px;flex-shrink:0;}
-.sb-cnt{margin-left:auto;background:var(--bg);border-radius:100px;padding:1px 7px;font-size:10px;color:var(--text3);}
-.sb-item.active .sb-cnt{background:var(--border);color:var(--text2);}
-
-/* TOGGLE VIEW */
-.view-toggle{margin:10px 10px 0;display:flex;background:var(--bg3);border-radius:8px;padding:3px;border:1px solid var(--border);}
-.vt-btn{flex:1;padding:6px;border-radius:6px;border:none;background:transparent;color:var(--text2);font-size:11px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:5px;}
-.vt-btn.active{background:var(--bg2);color:var(--text);box-shadow:0 1px 4px rgba(0,0,0,.15);}
-
-.sb-bottom{padding:12px;border-top:1px solid var(--border);}
-.sb-theme{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;cursor:pointer;color:var(--text2);font-size:12px;font-weight:500;transition:all .2s;border:none;background:transparent;width:100%;font-family:'DM Sans',sans-serif;}
-.sb-theme:hover{background:var(--bg3);color:var(--text);}
-.live-wrap{display:flex;align-items:center;gap:6px;padding:5px 10px;font-size:11px;color:var(--green);margin-bottom:4px;}
-.live-dot{width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);animation:bl 1.5s infinite;}
+.sb-item.active .sico{color:var(--accent);}
+.sico{width:16px;text-align:center;font-size:13px;flex-shrink:0;}
+.scnt{margin-left:auto;background:var(--bg);border-radius:100px;padding:1px 7px;font-size:10px;color:var(--text3);}
+.sb-item.active .scnt{background:var(--border);color:var(--text2);}
+.vtog{margin:0 10px 10px;display:flex;background:var(--bg3);border-radius:8px;padding:3px;border:1px solid var(--border);}
+.vtbtn{flex:1;padding:6px;border-radius:6px;border:none;background:transparent;color:var(--text2);font-size:11px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:4px;}
+.vtbtn.active{background:var(--bg2);color:var(--text);box-shadow:0 1px 4px rgba(0,0,0,.15);}
+.sb-bot{padding:12px;border-top:1px solid var(--border);}
+.sb-theme{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;cursor:pointer;color:var(--text2);font-size:12px;font-weight:500;border:none;background:transparent;width:100%;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.sb-theme:hover{background:var(--bg3);}
+.livewrap{display:flex;align-items:center;gap:6px;padding:5px 10px;font-size:11px;color:var(--green);margin-bottom:4px;}
+.livedot{width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);animation:bl 1.5s infinite;}
 
 /* CONTENT */
 .content{margin-left:220px;flex:1;min-height:100vh;display:flex;flex-direction:column;}
 .topbar{padding:13px 26px;border-bottom:1px solid var(--border);background:var(--bg2);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
-.topbar-title{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;}
-.topbar-right{display:flex;align-items:center;gap:10px;}
+.tbtitle{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;}
+.tbright{display:flex;align-items:center;gap:10px;}
 #lupd{font-size:11px;color:var(--text3);}
 .pbtn{background:var(--accent);border:none;border-radius:8px;padding:7px 15px;color:#fff;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:5px;transition:all .2s;}
 .pbtn:hover{opacity:.85;}
@@ -53,17 +50,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .sp{display:inline-block;width:11px;height:11px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:rot .6s linear infinite;}
 @keyframes rot{to{transform:rotate(360deg);}}
 
-.main-area{padding:20px 26px;flex:1;}
-.page{display:none;}
-.page.active{display:block;}
+.main{padding:20px 26px;flex:1;}
+.page{display:none;}.page.active{display:block;}
 
-/* CARDS MÉTRICAS */
-.cgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;}
+/* CARDS */
+.cgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px;}
+.cgrid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px;}
 .mcard{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;box-shadow:var(--sh);animation:fu .35s ease forwards;opacity:0;}
-.mcard:nth-child(1){animation-delay:.05s;}
-.mcard:nth-child(2){animation-delay:.1s;}
-.mcard:nth-child(3){animation-delay:.15s;}
-.mcard:nth-child(4){animation-delay:.2s;}
+.mcard:nth-child(1){animation-delay:.05s;}.mcard:nth-child(2){animation-delay:.1s;}.mcard:nth-child(3){animation-delay:.15s;}.mcard:nth-child(4){animation-delay:.2s;}
 @keyframes fu{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
 .clbl{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:8px;}
 .cval{font-family:'Syne',sans-serif;font-size:30px;font-weight:800;letter-spacing:-1px;line-height:1;margin-bottom:5px;}
@@ -71,14 +65,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 
 /* TOOLBAR */
 .toolbar{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
-.search{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:8px 14px;color:var(--text);font-size:12px;font-family:'DM Sans',sans-serif;outline:none;transition:border .2s;width:240px;}
-.search:focus{border-color:var(--accent);}
-.search::placeholder{color:var(--text3);}
-.filter-select{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text);font-size:12px;font-family:'DM Sans',sans-serif;outline:none;cursor:pointer;}
+.fsearch{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:8px 14px;color:var(--text);font-size:12px;font-family:'DM Sans',sans-serif;outline:none;transition:border .2s;width:220px;}
+.fsearch:focus{border-color:var(--accent);}
+.fsearch::placeholder{color:var(--text3);}
+.fsel{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text);font-size:12px;font-family:'DM Sans',sans-serif;outline:none;cursor:pointer;}
 .tlbl{font-size:11px;color:var(--text3);margin-left:auto;}
 
 /* TABELA */
-.tbl-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--sh);animation:fu .35s .15s ease forwards;opacity:0;}
+.tbox{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--sh);animation:fu .35s .15s ease forwards;opacity:0;}
 table{width:100%;border-collapse:collapse;}
 thead th{padding:9px 14px;text-align:left;font-size:9px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--text3);background:var(--bg3);border-bottom:1px solid var(--border);}
 tbody tr{border-bottom:1px solid var(--border);transition:background .15s;}
@@ -87,50 +81,30 @@ tbody tr:hover{background:var(--bg3);}
 tbody td{padding:11px 14px;font-size:12px;vertical-align:middle;}
 .tn{font-weight:500;font-size:13px;}
 .td2{color:var(--text2);font-size:11px;margin-top:1px;}
-.tag-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:100px;font-size:10px;font-weight:600;}
-.tag-pill::before{content:'';width:4px;height:4px;border-radius:50%;}
+.pill{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:100px;font-size:10px;font-weight:600;}
+.pill::before{content:'';width:4px;height:4px;border-radius:50%;background:currentColor;}
 
 /* KANBAN */
-.kanban-wrap{display:grid;gap:12px;animation:fu .35s .15s ease forwards;opacity:0;}
-.kanban-col{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
-.kanban-head{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
-.kanban-title{font-size:12px;font-weight:600;color:var(--text);}
-.kanban-cnt{background:var(--bg3);border-radius:100px;padding:2px 8px;font-size:10px;color:var(--text2);}
-.kanban-body{padding:10px;}
-.k-card{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-bottom:8px;transition:background .15s;}
-.k-card:last-child{margin-bottom:0;}
-.k-card:hover{background:var(--border);}
-.k-name{font-size:12px;font-weight:500;}
-.k-phone{font-size:10px;color:var(--text2);margin-top:2px;}
-.k-date{font-size:10px;color:var(--text3);margin-top:3px;}
-.k-empty{padding:20px;text-align:center;color:var(--text3);font-size:11px;}
+.kboard{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;animation:fu .35s .15s ease forwards;opacity:0;}
+.kcol{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.khead{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.ktitle{font-size:12px;font-weight:600;}
+.kcnt{background:var(--bg3);border-radius:100px;padding:2px 8px;font-size:10px;color:var(--text2);}
+.kbody{padding:10px;max-height:400px;overflow-y:auto;}
+.kcard{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-bottom:8px;}
+.kcard:last-child{margin-bottom:0;}
+.kname{font-size:12px;font-weight:500;}
+.kphone{font-size:10px;color:var(--text2);margin-top:2px;}
+.kdate{font-size:10px;color:var(--text3);margin-top:3px;}
+.kempty{padding:20px;text-align:center;color:var(--text3);font-size:11px;}
 
-/* CAMPANHAS */
-.camp-selector{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
-.camp-selector label{font-size:12px;color:var(--text2);}
-.camp-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;}
-
-/* EMPTY / LOADING */
+/* EMPTY / LOAD */
 .empty{padding:40px 20px;text-align:center;color:var(--text3);font-size:12px;}
 .ld{padding:40px 20px;text-align:center;color:var(--text3);}
 .lsp{width:18px;height:18px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:rot .6s linear infinite;margin:0 auto 10px;display:block;}
-.err{background:rgba(240,82,82,.08);border:1px solid rgba(240,82,82,.2);border-radius:10px;padding:12px 16px;color:var(--red);font-size:12px;margin-bottom:16px;display:none;}
+.errbox{background:rgba(240,82,82,.08);border:1px solid rgba(240,82,82,.2);border-radius:10px;padding:12px 16px;color:var(--red);font-size:12px;margin-bottom:16px;display:none;}
 
-/* TAG COLORS */
-.t-mensagem{background:rgba(79,142,247,.12);color:var(--accent);}
-.t-mensagem::before{background:var(--accent);}
-.t-clicou{background:rgba(31,212,138,.12);color:var(--green);}
-.t-clicou::before{background:var(--green);}
-.t-baixando{background:rgba(245,166,35,.12);color:var(--yellow);}
-.t-baixando::before{background:var(--yellow);}
-.t-baixou{background:rgba(123,97,255,.12);color:var(--purple);}
-.t-baixou::before{background:var(--purple);}
-.t-confirmou{background:rgba(31,212,138,.15);color:var(--green);}
-.t-confirmou::before{background:var(--green);}
-.t-bloqueou{background:rgba(240,82,82,.12);color:var(--red);}
-.t-bloqueou::before{background:var(--red);}
-
-@media(max-width:900px){.content{margin-left:0;}.sidebar{display:none;}.cgrid,.camp-stats{grid-template-columns:1fr 1fr;}.main-area{padding:14px;}}
+@media(max-width:900px){.content{margin-left:0;}.sidebar{display:none;}.cgrid,.cgrid3{grid-template-columns:1fr 1fr;}.main{padding:14px;}}
 </style>
 </head>
 <body>
@@ -141,58 +115,54 @@ tbody td{padding:11px 14px;font-size:12px;vertical-align:middle;}
     <div class="sb-sub">Análise de Leads</div>
   </div>
   <nav class="sb-nav">
-    <div class="sb-section">Fluxo</div>
+    <div class="sb-sec">Fluxo</div>
     <button class="sb-item active" id="nav-leads" onclick="goPage('leads')">
-      <span class="sb-ico">◈</span>Retornos<span class="sb-cnt" id="cnt-leads">0</span>
+      <span class="sico">◈</span>Retornos<span class="scnt" id="cnt-leads">0</span>
     </button>
-    <div class="sb-section">Campanhas</div>
+    <div class="sb-sec">Campanhas</div>
     <button class="sb-item" id="nav-camp" onclick="goPage('camp')">
-      <span class="sb-ico">◉</span>Métricas<span class="sb-cnt" id="cnt-camp">0</span>
+      <span class="sico">◉</span>Métricas<span class="scnt" id="cnt-camp">0</span>
     </button>
   </nav>
 
-  <!-- TOGGLE CARDS / KANBAN -->
-  <div id="view-toggle-wrap" style="padding:0 10px 10px;">
+  <div id="vtogwrap" style="padding:0 10px 10px;">
     <div style="font-size:9px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--text3);padding:0 8px;margin-bottom:6px;">Visualização</div>
-    <div class="view-toggle">
-      <button class="vt-btn active" id="vt-cards" onclick="setView('cards')">▦ Cards</button>
-      <button class="vt-btn" id="vt-kanban" onclick="setView('kanban')">⊞ Kanban</button>
+    <div class="vtog">
+      <button class="vtbtn active" id="vt-cards" onclick="setView('cards')">▦ Cards</button>
+      <button class="vtbtn" id="vt-kanban" onclick="setView('kanban')">⊞ Kanban</button>
     </div>
   </div>
 
-  <div class="sb-bottom">
-    <div class="live-wrap"><div class="live-dot"></div>ao vivo · <span id="lupd2"></span></div>
+  <div class="sb-bot">
+    <div class="livewrap"><div class="livedot"></div>ao vivo · <span id="lupd2"></span></div>
     <button class="sb-theme" onclick="toggleTheme()"><span id="tico">☀️</span><span id="ttxt"> Modo claro</span></button>
   </div>
 </aside>
 
 <div class="content">
   <div class="topbar">
-    <div class="topbar-title" id="topTitle">Retornos do Fluxo</div>
-    <div class="topbar-right">
+    <div class="tbtitle" id="topTitle">Retornos do Fluxo</div>
+    <div class="tbright">
       <span id="lupd"></span>
       <button class="pbtn" id="rbtn" onclick="loadAll()">↻ Atualizar</button>
     </div>
   </div>
 
-  <div class="main-area">
-    <div class="err" id="err"></div>
+  <div class="main">
+    <div class="errbox" id="errbox"></div>
 
-    <!-- PAGE: LEADS (RETORNOS DO FLUXO) -->
+    <!-- RETORNOS -->
     <div class="page active" id="page-leads">
-
-      <!-- CARDS MÉTRICAS DO FLUXO -->
-      <div class="cgrid" id="leadsCards">
-        <div class="mcard"><div class="clbl">mensagem</div><div class="cval" style="color:var(--accent)" id="cm-mensagem">—</div><div class="csub">leads</div></div>
-        <div class="mcard"><div class="clbl">clicou no link</div><div class="cval" style="color:var(--green)" id="cm-clicou">—</div><div class="csub">leads</div></div>
-        <div class="mcard"><div class="clbl">baixando / baixou</div><div class="cval" style="color:var(--yellow)" id="cm-baixou">—</div><div class="csub">leads</div></div>
-        <div class="mcard"><div class="clbl">confirmou</div><div class="cval" style="color:var(--purple)" id="cm-confirmou">—</div><div class="csub">leads</div></div>
+      <div class="cgrid">
+        <div class="mcard"><div class="clbl">Mensagem</div><div class="cval" style="color:var(--accent)" id="m-msg">—</div><div class="csub">leads</div></div>
+        <div class="mcard"><div class="clbl">Clicou no Link</div><div class="cval" style="color:var(--green)" id="m-cli">—</div><div class="csub">leads</div></div>
+        <div class="mcard"><div class="clbl">Baixando / Baixou</div><div class="cval" style="color:var(--yellow)" id="m-bai">—</div><div class="csub">leads</div></div>
+        <div class="mcard"><div class="clbl">Confirmou</div><div class="cval" style="color:var(--purple)" id="m-con">—</div><div class="csub">leads</div></div>
       </div>
 
-      <!-- TOOLBAR -->
       <div class="toolbar">
-        <input class="search" id="searchLeads" type="text" placeholder="Buscar nome ou telefone..." oninput="renderLeads()">
-        <select class="filter-select" id="filterTag" onchange="renderLeads()">
+        <input class="fsearch" id="srchLeads" type="text" placeholder="Buscar nome ou telefone..." oninput="renderLeads()">
+        <select class="fsel" id="fTag" onchange="renderLeads()">
           <option value="">Todas as etapas</option>
           <option value="mensagem">mensagem</option>
           <option value="clicou no link">clicou no link</option>
@@ -201,51 +171,52 @@ tbody td{padding:11px 14px;font-size:12px;vertical-align:middle;}
           <option value="confirmou">confirmou</option>
           <option value="bloqueou">bloqueou</option>
         </select>
-        <span class="tlbl" id="leadsLbl"></span>
+        <span class="tlbl" id="lblLeads"></span>
       </div>
 
-      <!-- CARDS VIEW -->
-      <div id="view-cards">
-        <div class="tbl-wrap">
+      <div id="vw-cards">
+        <div class="tbox">
           <div id="tblLeads"><div class="ld"><span class="lsp"></span>Carregando...</div></div>
         </div>
       </div>
 
-      <!-- KANBAN VIEW -->
-      <div id="view-kanban" style="display:none;">
-        <div class="kanban-wrap" id="kanbanBoard" style="grid-template-columns:repeat(3,1fr);">
-          <div class="ld"><span class="lsp"></span>Carregando...</div>
-        </div>
+      <div id="vw-kanban" style="display:none;">
+        <div class="kboard" id="kboard"><div class="ld"><span class="lsp"></span>Carregando...</div></div>
       </div>
     </div>
 
-    <!-- PAGE: CAMPANHAS -->
+    <!-- CAMPANHAS -->
     <div class="page" id="page-camp">
-      <div class="camp-selector">
-        <label>Campanha:</label>
-        <select class="filter-select" id="campSelect" onchange="renderCamp()">
+      <div class="toolbar" style="margin-bottom:18px;">
+        <label style="font-size:12px;color:var(--text2);">Campanha:</label>
+        <select class="fsel" id="campSel" onchange="renderCamp()">
           <option value="">Todas as campanhas</option>
         </select>
       </div>
 
-      <div class="camp-stats">
-        <div class="mcard"><div class="clbl">Total da Campanha</div><div class="cval" style="color:var(--accent)" id="cs-total">—</div><div class="csub">leads importados</div></div>
-        <div class="mcard"><div class="clbl">Enviados</div><div class="cval" style="color:var(--green)" id="cs-enviados">—</div><div class="csub" id="cs-enviados-pct">—</div></div>
-        <div class="mcard"><div class="clbl">Falha</div><div class="cval" style="color:var(--red)" id="cs-falha">—</div><div class="csub" id="cs-falha-pct">—</div></div>
-        <div class="mcard"><div class="clbl">Sem Interação</div><div class="cval" style="color:var(--yellow)" id="cs-sem">—</div><div class="csub">não retornaram no fluxo</div></div>
+      <div class="cgrid">
+        <div class="mcard"><div class="clbl">Total da Campanha</div><div class="cval" style="color:var(--accent)" id="cs-tot">—</div><div class="csub">leads importados</div></div>
+        <div class="mcard"><div class="clbl">Enviados</div><div class="cval" style="color:var(--green)" id="cs-env">—</div><div class="csub" id="cs-env-p">—</div></div>
+        <div class="mcard"><div class="clbl">Falha</div><div class="cval" style="color:var(--red)" id="cs-fal">—</div><div class="csub" id="cs-fal-p">—</div></div>
+        <div class="mcard"><div class="clbl">Sem Interação</div><div class="cval" style="color:var(--yellow)" id="cs-sem">—</div><div class="csub">enviados sem retorno no fluxo</div></div>
       </div>
 
       <div class="toolbar">
-        <input class="search" id="searchCamp" type="text" placeholder="Buscar nome ou telefone..." oninput="renderCampTable()">
-        <select class="filter-select" id="filterStatus" onchange="renderCampTable()">
+        <input class="fsearch" id="srchCamp" type="text" placeholder="Buscar nome ou telefone..." oninput="renderCampTable()">
+        <select class="fsel" id="fStatus" onchange="renderCampTable()">
           <option value="">Todos os status</option>
           <option value="Enviado">Enviado</option>
-          <option value="Erro">Falha</option>
+          <option value="Falha">Falha</option>
         </select>
-        <span class="tlbl" id="campLbl"></span>
+        <select class="fsel" id="fInteracao" onchange="renderCampTable()">
+          <option value="">Toda interação</option>
+          <option value="sim">Com interação</option>
+          <option value="nao">Sem interação</option>
+        </select>
+        <span class="tlbl" id="lblCamp"></span>
       </div>
 
-      <div class="tbl-wrap">
+      <div class="tbox">
         <div id="tblCamp"><div class="ld"><span class="lsp"></span>Carregando...</div></div>
       </div>
     </div>
@@ -253,11 +224,8 @@ tbody td{padding:11px 14px;font-size:12px;vertical-align:middle;}
 </div>
 
 <script>
-// SUPABASE ÚNICO (eventos_leads + campanhas + envios)
-const SB1='https://zbysewrhmkrkqqqdpuhu.supabase.co';
-const SK1='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpieXNld3JobWtya3FxcWRwdWh1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5OTA5NzgsImV4cCI6MjA5MzU2Njk3OH0.fb8YI06hjEA7ZnU9z5DdXMI6_jv3JJ8FOSx_gw_R_iE';
-const SB2='https://vdloxobxrtfitbsuwzyw.supabase.co';
-const SK2='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZkbG94b2J4cnRmaXRic3V3enl3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgxNjc3MDIsImV4cCI6MjA5Mzc0MzcwMn0._tvrQCE_tPLhUqf1afVmBFJO75hSMzMFujmwmC6fg8c';
+const SB='https://vdloxobxrtfitbsuwzyw.supabase.co';
+const SK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZkbG94b2J4cnRmaXRic3V3enl3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgxNjc3MDIsImV4cCI6MjA5Mzc0MzcwMn0._tvrQCE_tPLhUqf1afVmBFJO75hSMzMFujmwmC6fg8c';
 
 // TEMA
 const saved=localStorage.getItem('theme')||'dark';
@@ -267,70 +235,84 @@ function toggleTheme(){
   const d=document.documentElement.getAttribute('data-theme')==='dark';
   document.documentElement.setAttribute('data-theme',d?'light':'dark');
   document.getElementById('tico').textContent=d?'🌙':'☀️';
-  document.getElementById('ttxt').textContent=d?'Modo escuro':' Modo claro';
+  document.getElementById('ttxt').textContent=d?' Modo escuro':' Modo claro';
   localStorage.setItem('theme',d?'light':'dark');
+}
+
+// VIEW
+let currentView=localStorage.getItem('view')||'cards';
+function setView(v){
+  currentView=v;localStorage.setItem('view',v);
+  document.getElementById('vt-cards').classList.toggle('active',v==='cards');
+  document.getElementById('vt-kanban').classList.toggle('active',v==='kanban');
+  document.getElementById('vw-cards').style.display=v==='cards'?'block':'none';
+  document.getElementById('vw-kanban').style.display=v==='kanban'?'block':'none';
+  if(v==='kanban') renderKanban();
+}
+setView(currentView);
+
+// PÁGINA
+function goPage(p){
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.getElementById('page-'+p).classList.add('active');
+  document.querySelectorAll('.sb-item').forEach(x=>x.classList.remove('active'));
+  document.getElementById('nav-'+p).classList.add('active');
+  document.getElementById('topTitle').textContent=p==='leads'?'Retornos do Fluxo':'Métricas de Campanha';
+  document.getElementById('vtogwrap').style.display=p==='leads'?'block':'none';
+}
+
+// FORMATADORES
+const fdt=d=>{if(!d)return'—';const s=d.endsWith('Z')||d.includes('+')?d:d+'Z';return new Date(s).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});};
+const pct=v=>`${(v||0).toFixed(1)}%`;
+
+// TAG CLASS
+function tagCls(t){
+  if(!t)return'';const n=t.toLowerCase();
+  if(n.includes('mensagem'))return'color:var(--accent)';
+  if(n.includes('clicou'))return'color:var(--green)';
+  if(n.includes('baixando'))return'color:var(--yellow)';
+  if(n.includes('baixou'))return'color:var(--purple)';
+  if(n.includes('confirmou'))return'color:var(--green)';
+  if(n.includes('bloqueou'))return'color:var(--red)';
+  return'color:var(--text2)';
+}
+function tagBg(t){
+  if(!t)return'background:var(--bg3);color:var(--text2)';const n=t.toLowerCase();
+  if(n.includes('mensagem'))return'background:rgba(79,142,247,.12);color:var(--accent)';
+  if(n.includes('clicou'))return'background:rgba(31,212,138,.12);color:var(--green)';
+  if(n.includes('baixando'))return'background:rgba(245,166,35,.12);color:var(--yellow)';
+  if(n.includes('baixou'))return'background:rgba(123,97,255,.12);color:var(--purple)';
+  if(n.includes('confirmou'))return'background:rgba(31,212,138,.15);color:var(--green)';
+  if(n.includes('bloqueou'))return'background:rgba(240,82,82,.12);color:var(--red)';
+  return'background:var(--bg3);color:var(--text2)';
+}
+
+// FETCH COM PAGINAÇÃO COMPLETA
+async function fetchAll(table, params=''){
+  let all=[];
+  let from=0;
+  const size=1000;
+  while(true){
+    const r=await fetch(`${SB}/rest/v1/${table}?${params}&limit=${size}&offset=${from}`,{
+      headers:{apikey:SK,Authorization:`Bearer ${SK}`,Range:`${from}-${from+size-1}`,'Range-Unit':'items'}
+    });
+    if(!r.ok) throw new Error(`HTTP ${r.status} — ${table}`);
+    const data=await r.json();
+    if(!Array.isArray(data)||data.length===0) break;
+    all=[...all,...data];
+    if(data.length<size) break;
+    from+=size;
+  }
+  return all;
 }
 
 // ESTADO
 let leadsData=[];
 let enviosData=[];
 let campanhasData=[];
-let currentPage='leads';
-let currentView=localStorage.getItem('view')||'cards';
 
-// VIEW TOGGLE
-function setView(v){
-  currentView=v;
-  localStorage.setItem('view',v);
-  document.getElementById('vt-cards').classList.toggle('active',v==='cards');
-  document.getElementById('vt-kanban').classList.toggle('active',v==='kanban');
-  document.getElementById('view-cards').style.display=v==='cards'?'block':'none';
-  document.getElementById('view-kanban').style.display=v==='kanban'?'block':'none';
-  if(v==='kanban') renderKanban();
-}
-setView(currentView);
-
-// PÁGINAS
-function goPage(p){
-  currentPage=p;
-  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
-  document.getElementById(`page-${p}`).classList.add('active');
-  document.querySelectorAll('.sb-item').forEach(x=>x.classList.remove('active'));
-  document.getElementById(`nav-${p}`).classList.add('active');
-  document.getElementById('topTitle').textContent=p==='leads'?'Retornos do Fluxo':'Métricas de Campanha';
-  document.getElementById('view-toggle-wrap').style.display=p==='leads'?'block':'none';
-}
-
-// FORMATADORES
-const dt=d=>{
-  if(!d) return'—';
-  const s=d.endsWith('Z')||d.includes('+')?d:d+'Z';
-  return new Date(s).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
-};
-const pct=v=>`${(v||0).toFixed(1)}%`;
-
-// TAG COLOR CLASS
-function tagClass(t){
-  if(!t) return '';
-  const n=t.toLowerCase();
-  if(n.includes('mensagem')) return 't-mensagem';
-  if(n.includes('clicou')) return 't-clicou';
-  if(n.includes('baixando')) return 't-baixando';
-  if(n.includes('baixou')) return 't-baixou';
-  if(n.includes('confirmou')) return 't-confirmou';
-  if(n.includes('bloqueou')) return 't-bloqueou';
-  return '';
-}
-
-// FETCH
-async function qFetch(base,key,table,params=''){
-  const r=await fetch(`${base}/rest/v1/${table}?${params}`,{headers:{apikey:key,Authorization:`Bearer ${key}`}});
-  if(!r.ok) throw new Error(`HTTP ${r.status} — ${table}`);
-  return r.json();
-}
-
-// DEDUPLICAR LEADS (pega última tag por lead_phone)
-function deduplicarLeads(data){
+// DEDUPLICAR LEADS — pega último evento por telefone
+function dedup(data){
   const m={};
   data.forEach(d=>{
     const k=d.lead_phone||d.lead_id||d.id;
@@ -343,50 +325,52 @@ function deduplicarLeads(data){
 async function loadAll(){
   const btn=document.getElementById('rbtn');
   btn.classList.add('busy');btn.innerHTML='<span class="sp"></span> Atualizando';
-  document.getElementById('err').style.display='none';
+  document.getElementById('errbox').style.display='none';
   try{
     const [leads,envios,campanhas]=await Promise.all([
-      qFetch(SB1,SK1,'eventos_leads','order=criado_em.desc&limit=2000'),
-      qFetch(SB2,SK2,'envios','order=criado_em.desc&limit=5000'),
-      qFetch(SB2,SK2,'campanhas','order=nome.asc'),
+      fetchAll('eventos_leads','order=criado_em.desc'),
+      fetchAll('envios','order=criado_em.desc'),
+      fetchAll('campanhas','order=nome.asc'),
     ]);
     leadsData=leads;
     enviosData=envios;
     campanhasData=campanhas;
-    renderMetricsLeads();
+
+    renderMetrics();
     renderLeads();
-    renderCampSelector();
+    populateCampSelect();
     renderCamp();
-    document.getElementById('cnt-leads').textContent=deduplicarLeads(leads).length;
+
+    document.getElementById('cnt-leads').textContent=dedup(leads).length;
     document.getElementById('cnt-camp').textContent=campanhas.length;
     const t=new Date().toLocaleTimeString('pt-BR',{timeZone:'America/Sao_Paulo',hour:'2-digit',minute:'2-digit'});
     document.getElementById('lupd').textContent=t;
     document.getElementById('lupd2').textContent=t;
   }catch(e){
-    const b=document.getElementById('err');b.style.display='block';
+    const b=document.getElementById('errbox');b.style.display='block';
     b.textContent=`Erro: ${e.message}`;
   }
   btn.classList.remove('busy');btn.innerHTML='↻ Atualizar';
 }
 
 // MÉTRICAS LEADS
-function renderMetricsLeads(){
-  const dedup=deduplicarLeads(leadsData);
-  const count=tag=>dedup.filter(d=>(d.tag_name||'').toLowerCase().includes(tag)).length;
-  document.getElementById('cm-mensagem').textContent=count('mensagem');
-  document.getElementById('cm-clicou').textContent=count('clicou');
-  document.getElementById('cm-baixou').textContent=count('baixou')+count('baixando');
-  document.getElementById('cm-confirmou').textContent=count('confirmou');
+function renderMetrics(){
+  const d=dedup(leadsData);
+  const c=tag=>d.filter(x=>(x.tag_name||'').toLowerCase().includes(tag)).length;
+  document.getElementById('m-msg').textContent=c('mensagem');
+  document.getElementById('m-cli').textContent=c('clicou');
+  document.getElementById('m-bai').textContent=c('baixou')+c('baixando');
+  document.getElementById('m-con').textContent=c('confirmou');
 }
 
-// RENDER LEADS (CARDS/TABELA)
+// RENDER LEADS (CARDS)
 function renderLeads(){
-  const q=document.getElementById('searchLeads').value.toLowerCase().trim();
-  const tag=document.getElementById('filterTag').value.toLowerCase();
-  let data=deduplicarLeads(leadsData);
+  const q=document.getElementById('srchLeads').value.toLowerCase().trim();
+  const tag=document.getElementById('fTag').value.toLowerCase();
+  let data=dedup(leadsData);
   if(tag) data=data.filter(d=>(d.tag_name||'').toLowerCase()===tag);
   if(q) data=data.filter(d=>(d.lead_name||'').toLowerCase().includes(q)||(d.lead_phone||'').includes(q));
-  document.getElementById('leadsLbl').textContent=`${data.length} lead${data.length!==1?'s':''}`;
+  document.getElementById('lblLeads').textContent=`${data.length} lead${data.length!==1?'s':''}`;
   if(currentView==='kanban'){renderKanban(data);return;}
   if(!data.length){document.getElementById('tblLeads').innerHTML='<div class="empty">Nenhum lead encontrado</div>';return;}
   document.getElementById('tblLeads').innerHTML=`<div style="overflow-x:auto"><table>
@@ -394,115 +378,107 @@ function renderLeads(){
     <tbody>${data.map((d,i)=>`<tr>
       <td style="color:var(--text3);font-size:11px;">${i+1}</td>
       <td><div class="tn">${d.lead_name||'—'}</div><div class="td2">${d.lead_phone||''}</div></td>
-      <td><span class="tag-pill ${tagClass(d.tag_name)}">${d.tag_name||'—'}</span></td>
+      <td><span class="pill" style="${tagBg(d.tag_name)}">${d.tag_name||'—'}</span></td>
       <td style="font-size:12px;color:var(--text2);">${d.fluxo||'—'}</td>
-      <td style="font-size:11px;color:var(--text3);">${dt(d.criado_em)}</td>
+      <td style="font-size:11px;color:var(--text3);">${fdt(d.criado_em)}</td>
     </tr>`).join('')}</tbody>
   </table></div>`;
 }
 
 // RENDER KANBAN
-const TAGS_ORDER=['mensagem','clicou no link','baixando agora','baixou o app','confirmou','bloqueou'];
-const TAG_COLORS={'mensagem':'var(--accent)','clicou no link':'var(--green)','baixando agora':'var(--yellow)','baixou o app':'var(--purple)','confirmou':'var(--green)','bloqueou':'var(--red)'};
-
+const TAGS=['mensagem','clicou no link','baixando agora','baixou o app','confirmou','bloqueou'];
 function renderKanban(dataOverride){
-  const q=document.getElementById('searchLeads').value.toLowerCase().trim();
-  const tagF=document.getElementById('filterTag').value.toLowerCase();
-  let data=dataOverride||deduplicarLeads(leadsData);
+  const q=document.getElementById('srchLeads').value.toLowerCase().trim();
+  const tagF=document.getElementById('fTag').value.toLowerCase();
+  let data=dataOverride||dedup(leadsData);
   if(tagF) data=data.filter(d=>(d.tag_name||'').toLowerCase()===tagF);
   if(q) data=data.filter(d=>(d.lead_name||'').toLowerCase().includes(q)||(d.lead_phone||'').includes(q));
 
-  const cols=TAGS_ORDER.map(tag=>{
+  document.getElementById('kboard').innerHTML=TAGS.map(tag=>{
     const leads=data.filter(d=>(d.tag_name||'').toLowerCase()===tag);
-    const color=TAG_COLORS[tag]||'var(--text2)';
-    const cards=leads.length?leads.map(d=>`
-      <div class="k-card">
-        <div class="k-name">${d.lead_name||'—'}</div>
-        <div class="k-phone">${d.lead_phone||''}</div>
-        <div class="k-date">${dt(d.criado_em)}</div>
-      </div>`).join(''):'<div class="k-empty">nenhum lead</div>';
-    return`<div class="kanban-col">
-      <div class="kanban-head">
-        <span class="kanban-title" style="color:${color}">${tag}</span>
-        <span class="kanban-cnt">${leads.length}</span>
+    return`<div class="kcol">
+      <div class="khead">
+        <span class="ktitle" style="${tagCls(tag)}">${tag}</span>
+        <span class="kcnt">${leads.length}</span>
       </div>
-      <div class="kanban-body">${cards}</div>
+      <div class="kbody">${leads.length?leads.map(d=>`
+        <div class="kcard">
+          <div class="kname">${d.lead_name||'—'}</div>
+          <div class="kphone">${d.lead_phone||''}</div>
+          <div class="kdate">${fdt(d.criado_em)}</div>
+        </div>`).join(''):'<div class="kempty">nenhum lead</div>'}</div>
     </div>`;
-  });
-
-  const board=document.getElementById('kanbanBoard');
-  board.style.gridTemplateColumns='repeat(3,1fr)';
-  board.innerHTML=cols.join('');
+  }).join('');
 }
 
-// RENDER SELETOR DE CAMPANHAS
-function renderCampSelector(){
-  const sel=document.getElementById('campSelect');
+// SELETOR DE CAMPANHAS
+function populateCampSelect(){
+  const sel=document.getElementById('campSel');
   const cur=sel.value;
   sel.innerHTML='<option value="">Todas as campanhas</option>';
   campanhasData.forEach(c=>{
     const o=document.createElement('option');
-    o.value=c.id;o.textContent=c.nome;
-    if(c.id===cur) o.selected=true;
+    o.value=c.nome;o.textContent=c.nome;
+    if(c.nome===cur)o.selected=true;
     sel.appendChild(o);
   });
 }
 
 // RENDER CAMPANHA
 function renderCamp(){
-  const campId=document.getElementById('campSelect').value;
+  const campNome=document.getElementById('campSel').value;
   let envios=enviosData;
-  if(campId) envios=envios.filter(e=>e.campanha_id===campId);
+  if(campNome) envios=envios.filter(e=>e.campanha_nome===campNome);
 
   const total=envios.length;
-  const enviados=envios.filter(e=>(e.status||'').toLowerCase()==='enviado'||(e.status||'').toLowerCase()==='sent').length;
-  const falha=envios.filter(e=>(e.status||'').toLowerCase()==='erro'||(e.status||'').toLowerCase()==='error'||(e.status||'').toLowerCase()==='falha').length;
+  const enviados=envios.filter(e=>{const s=(e.status||'').toLowerCase();return s==='enviado'||s==='sent';});
+  const falha=envios.filter(e=>{const s=(e.status||'').toLowerCase();return s==='falha'||s==='erro'||s==='error'||s==='failure';});
 
-  // Leads sem interação = enviados que NÃO aparecem no fluxo (eventos_leads)
-  const phonesFluxo=new Set(deduplicarLeads(leadsData).map(d=>d.lead_phone));
-  const semInteracao=envios.filter(e=>{
-    const status=(e.status||'').toLowerCase();
-    const isEnviado=status==='enviado'||status==='sent';
-    return isEnviado && !phonesFluxo.has(e.telefone);
-  }).length;
+  // Sem interação: enviados cujo telefone NÃO aparece em eventos_leads
+  const phonesFluxo=new Set(leadsData.map(d=>d.lead_phone));
+  const semInteracao=enviados.filter(e=>!phonesFluxo.has(e.telefone));
 
-  document.getElementById('cs-total').textContent=total;
-  document.getElementById('cs-enviados').textContent=enviados;
-  document.getElementById('cs-enviados-pct').textContent=pct(total?enviados/total*100:0)+' do total';
-  document.getElementById('cs-falha').textContent=falha;
-  document.getElementById('cs-falha-pct').textContent=pct(total?falha/total*100:0)+' do total';
-  document.getElementById('cs-sem').textContent=semInteracao;
+  document.getElementById('cs-tot').textContent=total;
+  document.getElementById('cs-env').textContent=enviados.length;
+  document.getElementById('cs-env-p').textContent=pct(total?enviados.length/total*100:0)+' do total';
+  document.getElementById('cs-fal').textContent=falha.length;
+  document.getElementById('cs-fal-p').textContent=pct(total?falha.length/total*100:0)+' do total';
+  document.getElementById('cs-sem').textContent=semInteracao.length;
 
   renderCampTable();
 }
 
 function renderCampTable(){
-  const campId=document.getElementById('campSelect').value;
-  const q=document.getElementById('searchCamp').value.toLowerCase().trim();
-  const status=document.getElementById('filterStatus').value.toLowerCase();
+  const campNome=document.getElementById('campSel').value;
+  const q=document.getElementById('srchCamp').value.toLowerCase().trim();
+  const status=document.getElementById('fStatus').value;
+  const interacao=document.getElementById('fInteracao').value;
+
+  const phonesFluxo=new Set(leadsData.map(d=>d.lead_phone));
+  const getTag=phone=>{const l=dedup(leadsData).find(d=>d.lead_phone===phone);return l?l.tag_name:'';};
+
   let data=enviosData;
-  if(campId) data=data.filter(e=>e.campanha_id===campId);
-  if(status) data=data.filter(e=>(e.status||'').toLowerCase().includes(status));
+  if(campNome) data=data.filter(e=>e.campanha_nome===campNome);
+  if(status) data=data.filter(e=>(e.status||'').toLowerCase()===status.toLowerCase());
+  if(interacao==='sim') data=data.filter(e=>phonesFluxo.has(e.telefone));
+  if(interacao==='nao') data=data.filter(e=>!phonesFluxo.has(e.telefone));
   if(q) data=data.filter(e=>(e.nome||'').toLowerCase().includes(q)||(e.telefone||'').includes(q));
-  document.getElementById('campLbl').textContent=`${data.length} registro${data.length!==1?'s':''}`;
+
+  document.getElementById('lblCamp').textContent=`${data.length} registro${data.length!==1?'s':''}`;
   if(!data.length){document.getElementById('tblCamp').innerHTML='<div class="empty">Nenhum registro encontrado</div>';return;}
 
-  // Verifica se lead interagiu no fluxo
-  const phonesFluxo=new Set(deduplicarLeads(leadsData).map(d=>d.lead_phone));
-  const getTagLead=phone=>{ const l=deduplicarLeads(leadsData).find(d=>d.lead_phone===phone); return l?l.tag_name:''; };
-
   document.getElementById('tblCamp').innerHTML=`<div style="overflow-x:auto"><table>
-    <thead><tr><th>#</th><th>Nome / Telefone</th><th>Campanha</th><th>Status Envio</th><th>Interação no Fluxo</th><th>Data</th></tr></thead>
-    <tbody>${data.slice(0,200).map((e,i)=>{
+    <thead><tr><th>#</th><th>Nome / Telefone</th><th>Campanha</th><th>Status Envio</th><th>Interação no Fluxo</th><th>Data / Hora</th></tr></thead>
+    <tbody>${data.map((e,i)=>{
+      const isEnv=(e.status||'').toLowerCase()==='enviado'||(e.status||'').toLowerCase()==='sent';
       const interagiu=phonesFluxo.has(e.telefone);
-      const tagLead=getTagLead(e.telefone);
-      const isErr=(e.status||'').toLowerCase()==='erro'||(e.status||'').toLowerCase()==='error';
+      const tag=getTag(e.telefone);
       return`<tr>
         <td style="color:var(--text3);font-size:11px;">${i+1}</td>
         <td><div class="tn">${e.nome||'—'}</div><div class="td2">${e.telefone||''}</div></td>
         <td style="font-size:11px;color:var(--text2);">${e.campanha_nome||'—'}</td>
-        <td><span class="tag-pill" style="background:${isErr?'rgba(240,82,82,.12)':'rgba(31,212,138,.12)'};color:${isErr?'var(--red)':'var(--green)'}">${e.status||'—'}</span></td>
-        <td>${interagiu?`<span class="tag-pill ${tagClass(tagLead)}">${tagLead}</span>`:`<span style="font-size:11px;color:var(--text3);">sem interação</span>`}</td>
+        <td><span class="pill" style="${isEnv?'background:rgba(31,212,138,.12);color:var(--green)':'background:rgba(240,82,82,.12);color:var(--red)'}">${e.status||'—'}</span></td>
+        <td>${interagiu?`<span class="pill" style="${tagBg(tag)}">${tag||'sim'}</span>`:`<span style="font-size:11px;color:var(--text3);">sem interação</span>`}</td>
         <td style="font-size:11px;color:var(--text3);">${e.data||''} ${e.hora||''}</td>
       </tr>`;
     }).join('')}</tbody>
